@@ -24,6 +24,8 @@ class LogInCollectionViewCell : UICollectionViewCell {
     
     var delegate : CollectionViewIndexPicker?
     
+    let firebaseService = FirebaseService()
+    
     @IBAction func buttonPressed(_ sender: UIButton) {
         switch sender.currentTitle {
         case "Register":
@@ -51,12 +53,8 @@ class LogInCollectionViewCell : UICollectionViewCell {
         if emailTextField.text == "" || passwordTextField.text == "" {
             AppManager.shared.messagePresent(title: "OOOPS!", message: "Please enter your E-mail or Password please ", type: .error)
         } else {
-            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
-                if let error = error {
-                    AppManager.shared.messagePresent(title: "OOOOPS", message: error.localizedDescription, type: .error)
-                } else {
-                    self.window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
-                }
+            firebaseService.logIn(email: emailTextField.text!, password: passwordTextField.text!) { (_) in
+                self.window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
             }
         }
     }

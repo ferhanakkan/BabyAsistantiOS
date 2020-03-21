@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let newScene = (scene as? UIWindowScene) else { return }
-        //                Must declare window from there for iOS or newer devices
+        
         window = UIWindow(windowScene: newScene)
         window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
         window?.makeKeyAndVisible()
