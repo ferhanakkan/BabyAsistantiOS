@@ -37,7 +37,7 @@ struct FirebaseService {
             if let error = error {
                 AppManager.shared.messagePresent(title: "OOOOPS", message: error.localizedDescription, type: .error)
             } else {
-                setUsername(username: username) { (_) in
+                self.setUsername(username: username) { (_) in
                     completion(true)
                 }
             }
