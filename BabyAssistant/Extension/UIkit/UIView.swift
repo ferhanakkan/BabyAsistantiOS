@@ -9,12 +9,6 @@
 import UIKit
 
 extension UIView {
-   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
-    }
     
 @IBInspectable var cornerRadius: CGFloat {
         get {
@@ -25,4 +19,29 @@ extension UIView {
             layer.cornerRadius = abs(CGFloat(Int(newValue * 100)) / 100)
         }
     }
+    
+    func roundCornersEachCorner(_ corners: UIRectCorner, radius: CGFloat) {
+        if #available(iOS 11.0, *) {
+            clipsToBounds = true
+            layer.cornerRadius = radius
+            layer.maskedCorners = CACornerMask(rawValue: corners.rawValue)
+        } else {
+            let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+            let mask = CAShapeLayer()
+            mask.path = path.cgPath
+            layer.mask = mask
+        }
+    }
+    
+    func shadowAndCorner(radius: CGFloat, shadowRadius: CGFloat, opacity: Float, color: UIColor, width: Int, height: Int) {
+        layer.cornerRadius = radius
+        clipsToBounds = true
+        layer.masksToBounds = false
+        layer.shadowRadius = shadowRadius
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = CGSize(width: width, height: height)
+        layer.shadowColor = color.cgColor
+    }
+    
+    
 }

@@ -18,10 +18,10 @@ class NavigationBar {
             
             let navigationController = UINavigationController()
             navigationController.navigationBar.isTranslucent = false
-            navigationController.navigationBar.barTintColor = UIColor.lightOrange
+            navigationController.navigationBar.barTintColor = UIColor.backgroundGreen
             navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-            navigationController.navigationBar.barStyle = .black
             navigationController.navigationBar.tintColor = .white
+            navigationController.navigationBar.barStyle = .black            
             
             
             let appStartPoint = UIStoryboard.auth.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController

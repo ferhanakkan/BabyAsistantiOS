@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		368739DC242525CE00025E1A /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368739DB242525CE00025E1A /* SplashViewModel.swift */; };
+		368739DF242557EC00025E1A /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368739DE242557EC00025E1A /* UINavigationController.swift */; };
+		3687A9122425FFCB003E99F9 /* LogInCollectionViewCell\.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3687A9112425FFCB003E99F9 /* LogInCollectionViewCell\.swift */; };
+		3687A9142425FFDC003E99F9 /* LogInCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3687A9132425FFDC003E99F9 /* LogInCollectionViewCell.xib */; };
+		3687A91624261585003E99F9 /* RegisterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3687A91524261585003E99F9 /* RegisterCollectionViewCell.xib */; };
+		3687A918242615C5003E99F9 /* RegisterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3687A917242615C5003E99F9 /* RegisterCollectionViewCell.swift */; };
+		3687A91B24261795003E99F9 /* ResetPasswordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3687A91A24261795003E99F9 /* ResetPasswordCollectionViewCell.swift */; };
+		3687A91D242617AE003E99F9 /* ResetPasswordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3687A91C242617AE003E99F9 /* ResetPasswordCollectionViewCell.xib */; };
 		369B9AFE241FC0EC0000B426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B9AFD241FC0EC0000B426 /* AppDelegate.swift */; };
 		369B9B00241FC0EC0000B426 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B9AFF241FC0EC0000B426 /* SceneDelegate.swift */; };
 		369B9B07241FC0EF0000B426 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 369B9B06241FC0EF0000B426 /* AppIcon.xcassets */; };
@@ -27,7 +35,6 @@
 		369B9B3F242009930000B426 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B9B3E242009930000B426 /* AppManager.swift */; };
 		369B9B41242009B10000B426 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B9B40242009B10000B426 /* Constans.swift */; };
 		369B9B4524200A120000B426 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B9B4424200A120000B426 /* LoadingView.swift */; };
-		369B9B4A24200A6A0000B426 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B9B4924200A6A0000B426 /* BaseViewController.swift */; };
 		369B9B4D242150050000B426 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 369B9B4C242150050000B426 /* Auth.storyboard */; };
 		369B9B4F2421502D0000B426 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B9B4E2421502D0000B426 /* SplashViewController.swift */; };
 		369B9B52242150CC0000B426 /* TrashDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B9B51242150CC0000B426 /* TrashDataViewController.swift */; };
@@ -39,6 +46,14 @@
 /* Begin PBXFileReference section */
 		0E712C5CF1E0CC271A0B1AD4 /* Pods-BabyAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyAssistant.release.xcconfig"; path = "Target Support Files/Pods-BabyAssistant/Pods-BabyAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		3485CFB9A944D54237B4A305 /* Pods-BabyAssistant.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyAssistant.test.xcconfig"; path = "Target Support Files/Pods-BabyAssistant/Pods-BabyAssistant.test.xcconfig"; sourceTree = "<group>"; };
+		368739DB242525CE00025E1A /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		368739DE242557EC00025E1A /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		3687A9112425FFCB003E99F9 /* LogInCollectionViewCell\.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogInCollectionViewCell\\.swift"; sourceTree = "<group>"; };
+		3687A9132425FFDC003E99F9 /* LogInCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogInCollectionViewCell.xib; sourceTree = "<group>"; };
+		3687A91524261585003E99F9 /* RegisterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterCollectionViewCell.xib; sourceTree = "<group>"; };
+		3687A917242615C5003E99F9 /* RegisterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCollectionViewCell.swift; sourceTree = "<group>"; };
+		3687A91A24261795003E99F9 /* ResetPasswordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCollectionViewCell.swift; sourceTree = "<group>"; };
+		3687A91C242617AE003E99F9 /* ResetPasswordCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordCollectionViewCell.xib; sourceTree = "<group>"; };
 		369B9AFA241FC0EC0000B426 /* BabyAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		369B9AFD241FC0EC0000B426 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		369B9AFF241FC0EC0000B426 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +100,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		368739DD242533E000025E1A /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3687A91924261751003E99F9 /* Forgot Password */,
+				3687A9102425FFAF003E99F9 /* Log In */,
+				3687A90F2425FFA3003E99F9 /* Register */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		3687A90F2425FFA3003E99F9 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				3687A91524261585003E99F9 /* RegisterCollectionViewCell.xib */,
+				3687A917242615C5003E99F9 /* RegisterCollectionViewCell.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		3687A9102425FFAF003E99F9 /* Log In */ = {
+			isa = PBXGroup;
+			children = (
+				3687A9112425FFCB003E99F9 /* LogInCollectionViewCell\.swift */,
+				3687A9132425FFDC003E99F9 /* LogInCollectionViewCell.xib */,
+			);
+			path = "Log In";
+			sourceTree = "<group>";
+		};
+		3687A91924261751003E99F9 /* Forgot Password */ = {
+			isa = PBXGroup;
+			children = (
+				3687A91A24261795003E99F9 /* ResetPasswordCollectionViewCell.swift */,
+				3687A91C242617AE003E99F9 /* ResetPasswordCollectionViewCell.xib */,
+			);
+			path = "Forgot Password";
+			sourceTree = "<group>";
+		};
 		369B9AF1241FC0EC0000B426 = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +246,7 @@
 				369B9B34242008AB0000B426 /* UIApplication.swift */,
 				369B9B36242008C40000B426 /* UIColor.swift */,
 				369B9B38242008D50000B426 /* UIViewController.swift */,
+				368739DE242557EC00025E1A /* UINavigationController.swift */,
 			);
 			path = UIkit;
 			sourceTree = "<group>";
@@ -268,8 +321,10 @@
 		369B9B4B24214FEA0000B426 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				368739DD242533E000025E1A /* CollectionViewCell */,
 				369B9B4C242150050000B426 /* Auth.storyboard */,
 				369B9B4E2421502D0000B426 /* SplashViewController.swift */,
+				368739DB242525CE00025E1A /* SplashViewModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -365,9 +420,12 @@
 				369B9B4D242150050000B426 /* Auth.storyboard in Resources */,
 				369B9B562421546F0000B426 /* GoogleService-Info.plist in Resources */,
 				369B9B54242150E40000B426 /* Trash.storyboard in Resources */,
+				3687A9142425FFDC003E99F9 /* LogInCollectionViewCell.xib in Resources */,
+				3687A91D242617AE003E99F9 /* ResetPasswordCollectionViewCell.xib in Resources */,
 				369B9B0A241FC0EF0000B426 /* LaunchScreen.storyboard in Resources */,
 				369B9B07241FC0EF0000B426 /* AppIcon.xcassets in Resources */,
 				369B9B24242007E20000B426 /* lang-en.json in Resources */,
+				3687A91624261585003E99F9 /* RegisterCollectionViewCell.xib in Resources */,
 				369B9B26242008090000B426 /* Color.xcassets in Resources */,
 				369B9B28242008140000B426 /* Image.xcassets in Resources */,
 			);
@@ -440,21 +498,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				369B9B35242008AB0000B426 /* UIApplication.swift in Sources */,
+				3687A91B24261795003E99F9 /* ResetPasswordCollectionViewCell.swift in Sources */,
 				369B9B33242008950000B426 /* UIView.swift in Sources */,
 				369B9B3C2420096D0000B426 /* Reachability.swift in Sources */,
+				368739DC242525CE00025E1A /* SplashViewModel.swift in Sources */,
+				368739DF242557EC00025E1A /* UINavigationController.swift in Sources */,
 				369B9B4F2421502D0000B426 /* SplashViewController.swift in Sources */,
 				369B9AFE241FC0EC0000B426 /* AppDelegate.swift in Sources */,
 				369B9B39242008D50000B426 /* UIViewController.swift in Sources */,
 				369B9B2D242008520000B426 /* Date.swift in Sources */,
 				369B9B3F242009930000B426 /* AppManager.swift in Sources */,
+				3687A9122425FFCB003E99F9 /* LogInCollectionViewCell\.swift in Sources */,
 				369B9B00241FC0EC0000B426 /* SceneDelegate.swift in Sources */,
 				369B9B4524200A120000B426 /* LoadingView.swift in Sources */,
 				369B9B2F2420085F0000B426 /* Array.swift in Sources */,
 				369B9B52242150CC0000B426 /* TrashDataViewController.swift in Sources */,
 				369B9B1E242007510000B426 /* Tabbar.swift in Sources */,
 				369B9B21242007A40000B426 /* NavigationBar.swift in Sources */,
+				3687A918242615C5003E99F9 /* RegisterCollectionViewCell.swift in Sources */,
 				369B9B31242008820000B426 /* UIStoryboard.swift in Sources */,
-				369B9B4A24200A6A0000B426 /* BaseViewController.swift in Sources */,
 				369B9B41242009B10000B426 /* Constans.swift in Sources */,
 				369B9B37242008C40000B426 /* UIColor.swift in Sources */,
 			);
