@@ -9,14 +9,18 @@
 import UIKit
 import SnapKit
 
-final class SplashViewController: UIViewController {
+final class SplashViewController: UIViewController , CollectionViewIndexPicker {
     
     private let splashViewModel = SplashViewModel()
     
+    internal lazy var imageView:UIView? = nil
+    
     internal var collectionView: UICollectionView = {
-        let layout = UICollectionViewLayout()
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 300, height: 380) // make it self size !!!!
         let collectionview = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0 ), collectionViewLayout: layout)
-        collectionview.backgroundColor = .red
+        collectionview.backgroundColor = .clear
         return collectionview
     }()
     
@@ -28,9 +32,9 @@ final class SplashViewController: UIViewController {
             self.splashViewModel.setImage(self)
             self.splashViewModel.setCollectionView(owner: self)
             self.splashViewModel.collectionViewSetup(owner: self)
-            
         }
     }
+    
     
 }
 
@@ -39,7 +43,7 @@ final class SplashViewController: UIViewController {
 extension SplashViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 100
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -48,26 +52,14 @@ extension SplashViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("test")
-        switch indexPath.row {
-        case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResetPasswordCollectionViewCell", for: indexPath) as! ResetPasswordCollectionViewCell
-            print("0 cell")
-            return cell
-        case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RegisterCollectionViewCell", for: indexPath) as! RegisterCollectionViewCell
-            print("10 cell")
-            return cell
-        case 2:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LogInCollectionViewCell", for: indexPath) as! LogInCollectionViewCell
-            return cell
-        default:
-            let cell = UICollectionViewCell()
-            return cell
-        }
+        splashViewModel.collectionViewCell(indexPath: indexPath, owner: self)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         splashViewModel.collectionViewScroolEndEditing(self)
+    }
+    
+    func selectedCollectionViewRoad(row: Int) {
+        splashViewModel.collectionViewSetShowCell(row: row, owner: self)
     }
 }

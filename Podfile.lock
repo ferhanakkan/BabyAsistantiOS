@@ -159,6 +159,7 @@ PODS:
     - abseil/base/config
     - abseil/meta/type_traits
   - Alamofire (5.0.0-rc.2)
+  - BEMCheckBox (1.4.1)
   - BoringSSL-GRPC (0.0.3):
     - BoringSSL-GRPC/Implementation (= 0.0.3)
     - BoringSSL-GRPC/Interface (= 0.0.3)
@@ -305,7 +306,6 @@ PODS:
   - Kingfisher/Core (5.8.1)
   - leveldb-library (1.22)
   - Localize (2.3.0)
-  - M13Checkbox (3.4.0)
   - MarqueeLabel (4.0.2)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -332,6 +332,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (= 5.0.0-rc.2)
+  - BEMCheckBox
   - DateScrollPicker (= 1.0.1)
   - DLRadioButton (= 1.4.12)
   - DZNEmptyDataSet (= 1.8.1)
@@ -348,7 +349,6 @@ DEPENDENCIES:
   - KDCircularProgress (= 1.5.4)
   - Kingfisher (= 5.8.1)
   - Localize (= 2.3.0)
-  - M13Checkbox
   - NotificationBannerSwift (= 2.2.2)
   - PromisesSwift
   - QKMRZScanner (= 2.0.0)
@@ -360,6 +360,7 @@ SPEC REPOS:
   trunk:
     - abseil
     - Alamofire
+    - BEMCheckBox
     - BoringSSL-GRPC
     - DateScrollPicker
     - DLRadioButton
@@ -393,7 +394,6 @@ SPEC REPOS:
     - Kingfisher
     - leveldb-library
     - Localize
-    - M13Checkbox
     - MarqueeLabel
     - nanopb
     - NotificationBannerSwift
@@ -410,6 +410,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   DateScrollPicker: e56c054b24ca9b69381971db0d5cf9e0654534ef
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
@@ -443,7 +444,6 @@ SPEC CHECKSUMS:
   Kingfisher: de969e451c81ca6c07a454bc36fea84b8b08c3c7
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   Localize: cb1ae53ed73decaad0dce217806ed983091913f5
-  M13Checkbox: 6f59404540ac98ba83a3d1afac335895a40c6a5d
   MarqueeLabel: f762aa681ae201f66c1d511858b171f75d83013a
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   NotificationBannerSwift: 2d46cc1b4a0ebf4372baef383f2a2ca82bf0c235
@@ -457,6 +457,6 @@ SPEC CHECKSUMS:
   SwiftyTesseract: a05d2c6771872f203a9ba65055cb2a8b6a385552
   Telefon: 5608aa5cf594da4306a674eeac32a139ad8d913f
 
-PODFILE CHECKSUM: e8bd0b7fb4c1b0b54a6eef18c5e944c7aa36cebe
+PODFILE CHECKSUM: 2eb5ec8f5172e4edc7cbb9391688919326d0c144
 
 COCOAPODS: 1.9.0.beta.3

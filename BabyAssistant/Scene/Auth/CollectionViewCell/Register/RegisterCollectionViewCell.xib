@@ -26,7 +26,7 @@
                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                     </textField>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0gh-yR-VcG">
-                        <rect key="frame" x="20" y="90" width="411" height="40"/>
+                        <rect key="frame" x="20" y="80" width="411" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="CRU-tu-5wH"/>
                         </constraints>
@@ -36,6 +36,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFN-BN-HLc">
                         <rect key="frame" x="20" y="258" width="411" height="30"/>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="e8w-Nj-b56"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <state key="normal" title="Register">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,7 +48,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGg-j9-hPB">
-                        <rect key="frame" x="20" y="200" width="112" height="40"/>
+                        <rect key="frame" x="20" y="190" width="112" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="tcI-qh-i4Q"/>
                         </constraints>
@@ -91,34 +94,40 @@
                             <constraint firstItem="r0o-mS-Twm" firstAttribute="leading" secondItem="UaE-xf-DeU" secondAttribute="trailing" constant="10" id="zNS-yO-iXM"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ0-Xd-gB7" customClass="M13Checkbox">
-                        <rect key="frame" x="142" y="205" width="30" height="30"/>
-                        <color key="backgroundColor" red="0.89019607840000003" green="0.1333333333" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ0-Xd-gB7" customClass="BEMCheckBox">
+                        <rect key="frame" x="142" y="200" width="20" height="20"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="66w-xn-Bvv"/>
-                            <constraint firstAttribute="height" constant="30" id="guU-bu-Nj4"/>
+                            <constraint firstAttribute="width" constant="20" id="66w-xn-Bvv"/>
+                            <constraint firstAttribute="height" constant="20" id="guU-bu-Nj4"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="checkmarkLineWidth">
                                 <real key="value" value="0.0"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                <color key="value" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="onCheckColor">
+                                <color key="value" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iVm-be-Zod">
-                        <rect key="frame" x="20" y="140" width="411" height="40"/>
+                        <rect key="frame" x="20" y="130" width="411" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="fdB-cv-tiI"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                     </textField>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfP-6i-cg8">
-                        <rect key="frame" x="391" y="95" width="30" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfP-6i-cg8">
+                        <rect key="frame" x="391" y="85" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="VN9-L0-Jhq"/>
                             <constraint firstAttribute="height" constant="30" id="coq-bG-zFj"/>
                         </constraints>
-                        <state key="normal" backgroundImage="eyeHidden"/>
+                        <state key="normal" image="eyeHidden"/>
                         <connections>
                             <action selector="buttonPressed:" destination="fwl-xm-meY" eventType="touchUpInside" id="BRG-RJ-r2R"/>
                         </connections>
@@ -135,7 +144,7 @@
                     <constraint firstAttribute="trailing" secondItem="NFN-BN-HLc" secondAttribute="trailing" constant="20" id="Ez8-Hh-7oi"/>
                     <constraint firstItem="hZ0-Xd-gB7" firstAttribute="centerY" secondItem="cGg-j9-hPB" secondAttribute="centerY" id="FCS-n8-d8W"/>
                     <constraint firstItem="NFN-BN-HLc" firstAttribute="leading" secondItem="Qfm-Vd-V7i" secondAttribute="leading" constant="20" id="GfO-mA-AuJ"/>
-                    <constraint firstItem="0gh-yR-VcG" firstAttribute="top" secondItem="b2J-Ej-HCc" secondAttribute="bottom" constant="20" id="O94-BV-EkU"/>
+                    <constraint firstItem="0gh-yR-VcG" firstAttribute="top" secondItem="b2J-Ej-HCc" secondAttribute="bottom" constant="10" id="O94-BV-EkU"/>
                     <constraint firstAttribute="bottom" secondItem="qA1-fI-MX3" secondAttribute="bottom" constant="5" id="PHv-wR-CQm"/>
                     <constraint firstAttribute="trailing" secondItem="iVm-be-Zod" secondAttribute="trailing" constant="20" id="Qy6-0Y-nXP"/>
                     <constraint firstItem="0gh-yR-VcG" firstAttribute="leading" secondItem="Qfm-Vd-V7i" secondAttribute="leading" constant="20" id="RU3-uX-Xu3"/>
@@ -157,6 +166,7 @@
             <connections>
                 <outlet property="checkBoxView" destination="hZ0-Xd-gB7" id="2RZ-m6-imi"/>
                 <outlet property="emailTextField" destination="b2J-Ej-HCc" id="YTS-mv-0zY"/>
+                <outlet property="eyeButtonOutlet" destination="BfP-6i-cg8" id="qsU-qq-6H5"/>
                 <outlet property="passwordTextField" destination="0gh-yR-VcG" id="VQS-ir-5r7"/>
                 <outlet property="usernameTextField" destination="iVm-be-Zod" id="QYx-yY-o6e"/>
             </connections>

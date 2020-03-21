@@ -28,10 +28,12 @@ struct SplashViewModel {
     internal func setCollectionView(owner: SplashViewController) {
         owner.view.addSubview(owner.collectionView)
         owner.collectionView.shadowAndCorner(radius: 15, shadowRadius: 7, opacity: 0.6, color: .black, width: 5, height: 5)
+        owner.collectionView.showsVerticalScrollIndicator = false
+        owner.collectionView.showsHorizontalScrollIndicator = false
+        owner.collectionView.isScrollEnabled = false
         owner.collectionView.snp.makeConstraints { (make) in
             make.height.equalTo(owner.view.frame.height*0.6)
             make.width.equalTo(owner.view.frame.width*0.8)
-//            make.center.centerX.equalTo(owner.view.center.x)
             make.topMargin.equalTo(170)
             make.centerX.equalTo(owner.view.center.x)
         }
@@ -51,8 +53,9 @@ struct SplashViewModel {
         myImageView.image = image
         view.addSubview(myImageView)
         
-        owner.view.addSubview(view)
-        view.snp.makeConstraints { (make) in
+        owner.imageView = view
+        owner.view.addSubview(owner.imageView!)
+        owner.imageView!.snp.makeConstraints { (make) in
             make.center.centerX.equalTo(owner.view.center.x)
             make.topMargin.equalTo(70)
         }
@@ -66,17 +69,40 @@ struct SplashViewModel {
         owner.collectionView.register(UINib(nibName: "LogInCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "LogInCollectionViewCell")
         owner.collectionView.register(UINib(nibName: "ResetPasswordCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "ResetPasswordCollectionViewCell")
         owner.collectionView.isPagingEnabled = true
+        collectionViewSetShowCell(row: 1, owner: owner)
     }
     
     internal func collectionViewScroolEndEditing(_ owner : SplashViewController) {
         for cell in owner.collectionView.visibleCells {
             if let row = owner.collectionView.indexPath(for: cell)?.item {
-                if row == 1 {
-                    owner.collectionView.isScrollEnabled = false
-                } else {
-                    owner.collectionView.isScrollEnabled = true
-                }
+                let index = IndexPath(row: row, section: 0)
+                owner.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
             }
+        }
+    }
+    
+    internal func collectionViewSetShowCell(row: Int , owner: SplashViewController) {
+        let index = IndexPath(row: row, section: 0)
+        owner.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
+    }
+    
+    internal func collectionViewCell(indexPath: IndexPath, owner: SplashViewController) -> UICollectionViewCell{
+        switch indexPath.row {
+        case 0:
+            let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "ResetPasswordCollectionViewCell", for: indexPath) as! ResetPasswordCollectionViewCell
+            cell.delegate = owner
+            return cell
+        case 1:
+            let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "RegisterCollectionViewCell", for: indexPath) as! RegisterCollectionViewCell
+            cell.delegate = owner
+            return cell
+        case 2:
+            let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "LogInCollectionViewCell", for: indexPath) as! LogInCollectionViewCell
+            cell.delegate = owner
+            return cell
+        default:
+            let cell = UICollectionViewCell()
+            return cell
         }
     }
 }

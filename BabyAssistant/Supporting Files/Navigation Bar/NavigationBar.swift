@@ -13,24 +13,30 @@ class NavigationBar {
     
     class func createNavigatonController(owner: Any) -> UINavigationController{
         let currentUser = Auth.auth().currentUser
-        print("ferro\(currentUser)")
-        if currentUser == nil {
-            
-            let navigationController = UINavigationController()
-            navigationController.navigationBar.isTranslucent = false
-            navigationController.navigationBar.barTintColor = UIColor.backgroundGreen
-            navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-            navigationController.navigationBar.tintColor = .white
-            navigationController.navigationBar.barStyle = .black            
-            
-            
-            let appStartPoint = UIStoryboard.auth.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
-            
-            navigationController.setViewControllers([appStartPoint], animated: true)
-            return navigationController
+        if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
+            if currentUser != nil && rememberMe {
+                return Tabbar.createTabBarWithNavigationBar(owner: owner)
+            } else {
+                return  NavigationBar.navigationBarSplash()
+            }
         } else {
-            return Tabbar.createTabBarWithNavigationBar(owner: owner)
+            return NavigationBar.navigationBarSplash()
         }
+    }
+
+    class func navigationBarSplash() -> UINavigationController {
+        let navigationController = UINavigationController()
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.barTintColor = UIColor.backgroundGreen
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController.navigationBar.tintColor = .white
+        navigationController.navigationBar.barStyle = .black
+        
+        
+        let appStartPoint = UIStoryboard.auth.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
+        
+        navigationController.setViewControllers([appStartPoint], animated: true)
+        return navigationController
     }
     
 }
