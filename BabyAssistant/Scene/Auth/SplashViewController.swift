@@ -28,6 +28,7 @@ final class SplashViewController: UIViewController {
             self.splashViewModel.setImage(self)
             self.splashViewModel.setCollectionView(owner: self)
             self.splashViewModel.collectionViewSetup(owner: self)
+            
         }
     }
     
@@ -35,26 +36,35 @@ final class SplashViewController: UIViewController {
 
 //MARK: - CollectionView Setting
 
-extension SplashViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SplashViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 30
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 3
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
-        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HowToCollectionViewCell", for: indexPath) as! HowToCollectionViewCell
-        //            cell.descriptionLabel.text = datas[indexPath.row].description
-        //            cell.titleLabel.text = datas[indexPath.row].title
-        //            cell.imageView.image = UIImage(named: datas[indexPath.row].image)
-        //    //        cell.backgroundColor = indexPath.item % 2 == 0 ? .red : .green
-        //            cell.backgroundColor = .gray
-        return cell
+        print("test")
+        switch indexPath.row {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResetPasswordCollectionViewCell", for: indexPath) as! ResetPasswordCollectionViewCell
+            print("0 cell")
+            return cell
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RegisterCollectionViewCell", for: indexPath) as! RegisterCollectionViewCell
+            print("10 cell")
+            return cell
+        case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LogInCollectionViewCell", for: indexPath) as! LogInCollectionViewCell
+            return cell
+        default:
+            let cell = UICollectionViewCell()
+            return cell
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

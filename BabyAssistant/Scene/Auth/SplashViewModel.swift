@@ -62,14 +62,16 @@ struct SplashViewModel {
     internal func collectionViewSetup(owner: SplashViewController) {
         owner.collectionView.delegate = owner
         owner.collectionView.dataSource = owner
-        owner.collectionView.register(UINib(nibName: "HowToCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "HowToCollectionViewCell")
+        owner.collectionView.register(UINib(nibName: "RegisterCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "RegisterCollectionViewCell")
+        owner.collectionView.register(UINib(nibName: "LogInCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "LogInCollectionViewCell")
+        owner.collectionView.register(UINib(nibName: "ResetPasswordCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "ResetPasswordCollectionViewCell")
         owner.collectionView.isPagingEnabled = true
     }
     
     internal func collectionViewScroolEndEditing(_ owner : SplashViewController) {
         for cell in owner.collectionView.visibleCells {
             if let row = owner.collectionView.indexPath(for: cell)?.item {
-                if row == 0 {
+                if row == 1 {
                     owner.collectionView.isScrollEnabled = false
                 } else {
                     owner.collectionView.isScrollEnabled = true
