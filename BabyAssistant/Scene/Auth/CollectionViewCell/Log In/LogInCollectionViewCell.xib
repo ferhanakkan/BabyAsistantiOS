@@ -13,7 +13,7 @@
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Tgj-Wo-nTT" customClass="LogInCollectionViewCell" customModule="BabyAssistant" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="451" height="286"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HJ8-BY-VJu">
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="HJ8-BY-VJu">
                 <rect key="frame" x="0.0" y="0.0" width="451" height="286"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -34,9 +34,10 @@
                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xS-aE-nvT">
-                        <rect key="frame" x="20" y="191" width="411" height="30"/>
+                        <rect key="frame" x="20" y="190" width="411" height="30"/>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="UQt-vH-E1g"/>
                             <constraint firstAttribute="height" constant="30" id="oo7-Kh-oSr"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -72,7 +73,7 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jm-Pr-o2j">
-                        <rect key="frame" x="105.5" y="231" width="240" height="50"/>
+                        <rect key="frame" x="105.5" y="230" width="240" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you register?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfR-yv-SJh">
                                 <rect key="frame" x="22" y="10" width="130" height="30"/>
@@ -143,14 +144,16 @@
                 <constraints>
                     <constraint firstItem="3QJ-KD-18n" firstAttribute="top" secondItem="nrO-W9-kek" secondAttribute="bottom" constant="10" id="08L-3o-ru9"/>
                     <constraint firstAttribute="trailing" secondItem="G2k-Dm-jTr" secondAttribute="trailing" constant="30" id="1ar-HY-FrD"/>
+                    <constraint firstItem="3xS-aE-nvT" firstAttribute="top" secondItem="ftb-3i-O3q" secondAttribute="bottom" constant="20" id="2iC-Tb-11K"/>
                     <constraint firstItem="nrO-W9-kek" firstAttribute="top" secondItem="WBd-Ns-1ET" secondAttribute="bottom" constant="10" id="3S9-pl-80Q"/>
-                    <constraint firstAttribute="bottom" secondItem="8jm-Pr-o2j" secondAttribute="bottom" constant="5" id="5FP-8c-QuS"/>
                     <constraint firstItem="8jm-Pr-o2j" firstAttribute="top" secondItem="3xS-aE-nvT" secondAttribute="bottom" constant="10" id="5oT-YB-hX6"/>
                     <constraint firstAttribute="trailing" secondItem="WBd-Ns-1ET" secondAttribute="trailing" constant="20" id="BHI-sJ-b0T"/>
                     <constraint firstItem="mV1-hO-kAi" firstAttribute="centerY" secondItem="3QJ-KD-18n" secondAttribute="centerY" id="EJX-pW-17B"/>
                     <constraint firstItem="3QJ-KD-18n" firstAttribute="leading" secondItem="HJ8-BY-VJu" secondAttribute="leading" constant="20" id="MAW-Ic-5af"/>
+                    <constraint firstItem="3xS-aE-nvT" firstAttribute="top" secondItem="3QJ-KD-18n" secondAttribute="bottom" constant="20" id="N7a-0y-hC4"/>
                     <constraint firstItem="3xS-aE-nvT" firstAttribute="leading" secondItem="HJ8-BY-VJu" secondAttribute="leading" constant="20" id="NAQ-tW-MBU"/>
                     <constraint firstItem="WBd-Ns-1ET" firstAttribute="top" secondItem="HJ8-BY-VJu" secondAttribute="top" constant="30" id="Pne-5O-Wfg"/>
+                    <constraint firstAttribute="bottom" secondItem="8jm-Pr-o2j" secondAttribute="bottom" constant="10" id="aLv-Hb-wYm"/>
                     <constraint firstAttribute="trailing" secondItem="nrO-W9-kek" secondAttribute="trailing" constant="20" id="amz-EA-1B3"/>
                     <constraint firstItem="mV1-hO-kAi" firstAttribute="leading" secondItem="3QJ-KD-18n" secondAttribute="trailing" constant="10" id="bHU-NL-ehX"/>
                     <constraint firstItem="WBd-Ns-1ET" firstAttribute="leading" secondItem="HJ8-BY-VJu" secondAttribute="leading" constant="20" id="beB-N6-Csd"/>

@@ -17,10 +17,12 @@ class RegisterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var checkBoxView: BEMCheckBox!
     @IBOutlet weak var eyeButtonOutlet: UIButton!
+    @IBOutlet weak var registerButtonOutlet: UIButton!
     
     var delegate : CollectionViewIndexPicker?
     
     let firebaseService = FirebaseService()
+    
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         

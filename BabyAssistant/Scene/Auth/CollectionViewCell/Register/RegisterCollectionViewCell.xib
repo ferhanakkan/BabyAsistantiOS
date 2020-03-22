@@ -13,7 +13,7 @@
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fwl-xm-meY" customClass="RegisterCollectionViewCell" customModule="BabyAssistant" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="451" height="353"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qfm-Vd-V7i">
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="Qfm-Vd-V7i">
                 <rect key="frame" x="0.0" y="0.0" width="451" height="353"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
@@ -34,10 +34,11 @@
                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFN-BN-HLc">
-                        <rect key="frame" x="20" y="258" width="411" height="30"/>
+                        <rect key="frame" x="20" y="250" width="411" height="30"/>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="e8w-Nj-b56"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="kdQ-lT-894"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <state key="normal" title="Register">
@@ -57,7 +58,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qA1-fI-MX3">
-                        <rect key="frame" x="80.5" y="298" width="290" height="50"/>
+                        <rect key="frame" x="80.5" y="290" width="290" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you register before?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaE-xf-DeU">
                                 <rect key="frame" x="22" y="10" width="190" height="30"/>
@@ -140,6 +141,7 @@
                     <constraint firstItem="b2J-Ej-HCc" firstAttribute="leading" secondItem="Qfm-Vd-V7i" secondAttribute="leading" constant="20" id="CGJ-1A-wSl"/>
                     <constraint firstAttribute="trailing" secondItem="b2J-Ej-HCc" secondAttribute="trailing" constant="20" id="D9N-it-fr2"/>
                     <constraint firstItem="b2J-Ej-HCc" firstAttribute="top" secondItem="Qfm-Vd-V7i" secondAttribute="top" constant="30" id="DEh-Wd-A1z"/>
+                    <constraint firstItem="NFN-BN-HLc" firstAttribute="top" secondItem="cGg-j9-hPB" secondAttribute="bottom" constant="20" id="DpI-Q7-uz0"/>
                     <constraint firstItem="hZ0-Xd-gB7" firstAttribute="leading" secondItem="cGg-j9-hPB" secondAttribute="trailing" constant="10" id="Dwc-KB-Dxk"/>
                     <constraint firstAttribute="trailing" secondItem="NFN-BN-HLc" secondAttribute="trailing" constant="20" id="Ez8-Hh-7oi"/>
                     <constraint firstItem="hZ0-Xd-gB7" firstAttribute="centerY" secondItem="cGg-j9-hPB" secondAttribute="centerY" id="FCS-n8-d8W"/>
@@ -168,6 +170,7 @@
                 <outlet property="emailTextField" destination="b2J-Ej-HCc" id="YTS-mv-0zY"/>
                 <outlet property="eyeButtonOutlet" destination="BfP-6i-cg8" id="qsU-qq-6H5"/>
                 <outlet property="passwordTextField" destination="0gh-yR-VcG" id="VQS-ir-5r7"/>
+                <outlet property="registerButtonOutlet" destination="NFN-BN-HLc" id="6HU-2w-Bui"/>
                 <outlet property="usernameTextField" destination="iVm-be-Zod" id="QYx-yY-o6e"/>
             </connections>
             <point key="canvasLocation" x="238.40579710144928" y="134.93303571428569"/>

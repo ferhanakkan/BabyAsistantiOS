@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
         window?.makeKeyAndVisible()
+        
         return true
     }
     

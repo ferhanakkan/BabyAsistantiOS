@@ -28,6 +28,7 @@ target 'BabyAssistant' do
     pod 'Fabric', '~> 1.10.2'
     pod 'Firebase/Crashlytics'
     pod 'BEMCheckBox'
+  
 
   # Pods for BabyAssistant
 

@@ -9,9 +9,10 @@
 import UIKit
 import Firebase
 
-final class TrashDataViewController: UIViewController {
+class TrashDataViewController: BaseViewController {
     
     @IBOutlet weak var buttonPressed: UIButton!
+    
     @IBAction func buttonAction(_ sender: UIButton) {
         let firebaseAuth = Auth.auth()
         do {

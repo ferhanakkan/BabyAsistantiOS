@@ -43,6 +43,8 @@
 		369B9B52242150CC0000B426 /* TrashDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369B9B51242150CC0000B426 /* TrashDataViewController.swift */; };
 		369B9B54242150E40000B426 /* Trash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 369B9B53242150E40000B426 /* Trash.storyboard */; };
 		369B9B562421546F0000B426 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 369B9B552421546F0000B426 /* GoogleService-Info.plist */; };
+		36F561542427C8DD004943CC /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F561532427C8DD004943CC /* SideBar.swift */; };
+		36F561562427CBF4004943CC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F561552427CBF3004943CC /* BaseViewController.swift */; };
 		72A9994A42A6ADF1BCA8E1FD /* Pods_BabyAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DFF76700F3360322DC5D42 /* Pods_BabyAssistant.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,8 @@
 		369B9B51242150CC0000B426 /* TrashDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashDataViewController.swift; sourceTree = "<group>"; };
 		369B9B53242150E40000B426 /* Trash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trash.storyboard; sourceTree = "<group>"; };
 		369B9B552421546F0000B426 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		36F561532427C8DD004943CC /* SideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
+		36F561552427CBF3004943CC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = "BabyAssistant/Custom View/Side Bar/BaseViewController.swift"; sourceTree = SOURCE_ROOT; };
 		B6878BBD798FFAC37FAA2B76 /* Pods-BabyAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyAssistant.debug.xcconfig"; path = "Target Support Files/Pods-BabyAssistant/Pods-BabyAssistant.debug.xcconfig"; sourceTree = "<group>"; };
 		F8DFF76700F3360322DC5D42 /* Pods_BabyAssistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BabyAssistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -303,6 +307,7 @@
 		369B9B42242009F30000B426 /* Custom View */ = {
 			isa = PBXGroup;
 			children = (
+				36F561522427C8CD004943CC /* Side Bar */,
 				3687A92024262C03003E99F9 /* Error Succes View */,
 				369B9B43242009FD0000B426 /* Loading View */,
 			);
@@ -337,6 +342,7 @@
 		369B9B4824200A530000B426 /* Base ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				36F561552427CBF3004943CC /* BaseViewController.swift */,
 			);
 			path = "Base ViewController";
 			sourceTree = "<group>";
@@ -359,6 +365,14 @@
 				369B9B53242150E40000B426 /* Trash.storyboard */,
 			);
 			path = trashData;
+			sourceTree = "<group>";
+		};
+		36F561522427C8CD004943CC /* Side Bar */ = {
+			isa = PBXGroup;
+			children = (
+				36F561532427C8DD004943CC /* SideBar.swift */,
+			);
+			path = "Side Bar";
 			sourceTree = "<group>";
 		};
 		5B3C4F428E270C9688FB6BD2 /* Frameworks */ = {
@@ -534,6 +548,7 @@
 				365942052426C95900211840 /* FirebaseService.swift in Sources */,
 				369B9B2D242008520000B426 /* Date.swift in Sources */,
 				369B9B3F242009930000B426 /* AppManager.swift in Sources */,
+				36F561562427CBF4004943CC /* BaseViewController.swift in Sources */,
 				369B9B00241FC0EC0000B426 /* SceneDelegate.swift in Sources */,
 				3687A91F24261CF1003E99F9 /* LogInCollectionViewCell.swift in Sources */,
 				369B9B4524200A120000B426 /* LoadingView.swift in Sources */,
@@ -541,6 +556,7 @@
 				369B9B52242150CC0000B426 /* TrashDataViewController.swift in Sources */,
 				369B9B1E242007510000B426 /* Tabbar.swift in Sources */,
 				369B9B21242007A40000B426 /* NavigationBar.swift in Sources */,
+				36F561542427C8DD004943CC /* SideBar.swift in Sources */,
 				3687A918242615C5003E99F9 /* RegisterCollectionViewCell.swift in Sources */,
 				369B9B31242008820000B426 /* UIStoryboard.swift in Sources */,
 				369B9B41242009B10000B426 /* Constans.swift in Sources */,

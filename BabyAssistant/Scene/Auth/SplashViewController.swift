@@ -17,8 +17,9 @@ final class SplashViewController: UIViewController , CollectionViewIndexPicker {
     
     internal var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 300, height: 380) // make it self size !!!!
+//        layout.itemSize = CGSize(width: 300, height: 380) // make it self size !!!!
         let collectionview = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0 ), collectionViewLayout: layout)
         collectionview.backgroundColor = .clear
         return collectionview
@@ -43,7 +44,7 @@ final class SplashViewController: UIViewController , CollectionViewIndexPicker {
 extension SplashViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 100
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

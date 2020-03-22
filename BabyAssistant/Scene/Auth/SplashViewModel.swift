@@ -32,10 +32,11 @@ struct SplashViewModel {
         owner.collectionView.showsHorizontalScrollIndicator = false
         owner.collectionView.isScrollEnabled = false
         owner.collectionView.snp.makeConstraints { (make) in
-            make.height.equalTo(owner.view.frame.height*0.6)
-            make.width.equalTo(owner.view.frame.width*0.8)
-            make.topMargin.equalTo(170)
-            make.centerX.equalTo(owner.view.center.x)
+            make.leading.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(160)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-20)
+ 
         }
     }
         
@@ -54,10 +55,12 @@ struct SplashViewModel {
         view.addSubview(myImageView)
         
         owner.imageView = view
+        owner.imageView?.frame.size.width = 100
+        owner.imageView?.frame.size.height = 100
         owner.view.addSubview(owner.imageView!)
         owner.imageView!.snp.makeConstraints { (make) in
             make.center.centerX.equalTo(owner.view.center.x)
-            make.topMargin.equalTo(70)
+            make.top.equalToSuperview().offset(60)
         }
     }
     
@@ -94,6 +97,7 @@ struct SplashViewModel {
             return cell
         case 0:
             let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "RegisterCollectionViewCell", for: indexPath) as! RegisterCollectionViewCell
+            
             cell.delegate = owner
             return cell
         case 1:
