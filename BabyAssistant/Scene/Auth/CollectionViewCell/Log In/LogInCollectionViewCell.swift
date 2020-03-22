@@ -45,7 +45,7 @@ class LogInCollectionViewCell : UICollectionViewCell {
     }
     
     private func register() {
-        self.delegate?.selectedCollectionViewRoad(row: 1)
+        self.delegate?.selectedCollectionViewRoad(row: 0)
     }
     
     private func logIn() {
@@ -60,7 +60,7 @@ class LogInCollectionViewCell : UICollectionViewCell {
     }
     
     private func resetPassword() {
-        self.delegate?.selectedCollectionViewRoad(row: 0)
+        self.delegate?.selectedCollectionViewRoad(row: 2)
     }
     
     private func rememberMeSetter() {

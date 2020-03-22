@@ -40,7 +40,7 @@ class RegisterCollectionViewCell: UICollectionViewCell {
     }
     
     private func logIn() {
-        delegate?.selectedCollectionViewRoad(row: 2)
+        delegate?.selectedCollectionViewRoad(row: 1)
     }
     
     private func register() {

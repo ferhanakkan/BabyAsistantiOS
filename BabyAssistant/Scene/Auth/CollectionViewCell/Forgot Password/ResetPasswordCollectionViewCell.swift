@@ -21,13 +21,13 @@ class ResetPasswordCollectionViewCell: UICollectionViewCell {
             AppManager.shared.messagePresent(title: "OOOPS", message: "You didn't enter any password", type: .error)
         } else {
             firebaseService.resetPassword(email: emailTextField.text!) { (_) in
-                self.delegate?.selectedCollectionViewRoad(row: 2)
+                self.delegate?.selectedCollectionViewRoad(row: 1)
             }
         }
         
     }
     @IBAction func logInPressed(_ sender: UIButton) {
-        delegate?.selectedCollectionViewRoad(row: 2)
+        delegate?.selectedCollectionViewRoad(row: 1)
     }
 }
 

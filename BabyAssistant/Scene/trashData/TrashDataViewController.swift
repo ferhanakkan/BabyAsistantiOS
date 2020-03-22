@@ -16,6 +16,7 @@ final class TrashDataViewController: UIViewController {
         let firebaseAuth = Auth.auth()
         do {
           try firebaseAuth.signOut()
+            self.view.window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
         } catch let signOutError as NSError {
           print ("Error signing out: %@", signOutError)
         }

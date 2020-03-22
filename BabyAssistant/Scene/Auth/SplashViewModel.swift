@@ -88,15 +88,15 @@ struct SplashViewModel {
     
     internal func collectionViewCell(indexPath: IndexPath, owner: SplashViewController) -> UICollectionViewCell{
         switch indexPath.row {
-        case 0:
+        case 2:
             let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "ResetPasswordCollectionViewCell", for: indexPath) as! ResetPasswordCollectionViewCell
             cell.delegate = owner
             return cell
-        case 1:
+        case 0:
             let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "RegisterCollectionViewCell", for: indexPath) as! RegisterCollectionViewCell
             cell.delegate = owner
             return cell
-        case 2:
+        case 1:
             let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "LogInCollectionViewCell", for: indexPath) as! LogInCollectionViewCell
             cell.delegate = owner
             return cell
