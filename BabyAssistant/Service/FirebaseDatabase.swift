@@ -36,9 +36,9 @@ final class FirebaseDatabase {
         }
     }
     
-    internal func getSelectedTopicMessage(completion: @escaping([MessageModel]) -> Void) {
+    internal func getSelectedTopicMessage(owner: MessageViewController ,completion: @escaping([MessageModel]) -> Void) {
         let fireStoreDatabase = Firestore.firestore()
-        fireStoreDatabase.collection("TopicDatas").document(AppManager.shared.selectedForumTopic!).collection("Message").addSnapshotListener { (snapshot, error) in
+        fireStoreDatabase.collection("TopicDatas").document(AppManager.shared.selectedForumTopic!).collection("Message").order(by: "time").addSnapshotListener { (snapshot, error) in
             if error != nil {
                 print(error!)
             } else {
@@ -52,6 +52,10 @@ final class FirebaseDatabase {
                     }
                     DispatchQueue.main.async {
                         completion(self.messageArray)
+                        owner.tableView?.reloadData()
+                        if !self.messageArray.isEmpty {
+                            owner.tableView?.scrollToRow(at: IndexPath(row: 0, section: self.messageArray.count-1), at: .bottom, animated: true)
+                        }
                     }
                 }
             }
@@ -62,7 +66,8 @@ final class FirebaseDatabase {
         let fireStoreDatabase = Firestore.firestore()
         let docData: [String: Any] = [
             "sender": Auth.auth().currentUser?.displayName,
-            "body": message
+            "body": message,
+            "time": Date().timeIntervalSince1970
         ]
         fireStoreDatabase.collection("TopicDatas").document(AppManager.shared.selectedForumTopic!).collection("Message").addDocument(data: docData) { err in
             if let err = err {

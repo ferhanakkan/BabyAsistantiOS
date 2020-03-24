@@ -40,6 +40,10 @@ class Tabbar {
 
         navigationController = UINavigationController(rootViewController: tabController)
         navigationController.navigationBar.barTintColor = .backgroundGreen
+        
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.gray]
+        navigationController.navigationBar.tintColor = .gray
+        navigationController.navigationBar.barStyle = .black
         return navigationController
     }
 }

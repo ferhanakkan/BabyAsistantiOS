@@ -6,6 +6,8 @@
 //  Copyright © 2020 Ferhan Akkan. All rights reserved.
 //
 
+import Foundation
+
 struct MessageModel {
     let body: String
     let sender: String

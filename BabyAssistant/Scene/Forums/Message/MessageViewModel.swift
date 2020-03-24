@@ -22,7 +22,7 @@ class MessageViewModel {
             make.leading.equalToSuperview().offset(5)
             make.trailing.equalToSuperview().offset(-5)
             make.top.equalToSuperview().offset(AppManager.shared.safeAreaTopInset+32)
-            make.bottom.equalToSuperview().offset(-65)
+            make.bottom.equalToSuperview().offset(-69)
         }
         
         owner.tableView!.dataSource = owner
@@ -72,16 +72,17 @@ class MessageViewModel {
     }
     
     internal func getMessage(owner: MessageViewController) {
-        firebaseDatabase.getSelectedTopicMessage() { (data) in
+        firebaseDatabase.getSelectedTopicMessage(owner: owner) { (data) in
             self.messageModel = data
-            owner.tableView?.reloadData()
         }
     }
     
     func sendMessage(owner: MessageViewController) {
         if !(owner.messageTextfield?.text!.isEmpty)! {
             firebaseDatabase.sendMessageToTopic(message: (owner.messageTextfield!.text!))
-            owner.messageTextfield?.text = ""
+            DispatchQueue.main.async {
+                owner.messageTextfield?.text = ""
+            }
         }
     }
 
