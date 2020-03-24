@@ -43,5 +43,13 @@ extension UIView {
         layer.shadowColor = color.cgColor
     }
     
+    func makeRounded() {
+
+        layer.borderWidth = 1
+        layer.masksToBounds = false
+        layer.borderColor = UIColor.black.cgColor
+        layer.cornerRadius = frame.height/2 //This will change with corners of image and height/2 will make this circle shape
+        clipsToBounds = true
+    }
     
 }

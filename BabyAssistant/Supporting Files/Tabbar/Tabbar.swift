@@ -19,18 +19,27 @@ class Tabbar {
         
         let profilePage = UIStoryboard.trash.instantiateViewController(withIdentifier: "TrashDataViewController") as! TrashDataViewController
         
+        let forum = UIStoryboard.forum.instantiateViewController(withIdentifier: "ForumTopic") as! ForumTopicViewController
+        
+        
         homePage.title = "Home Page"
         profilePage.title = "Profile"
+        forum.title = "Forum"
 
-        tabController.viewControllers = [homePage,profilePage]
-//        tabController.tabBar.backgroundColor = UIColor(red: 95/255, green: 108/255, blue: 175/255, alpha: 1)
+        tabController.viewControllers = [homePage,profilePage,forum]
+        tabController.tabBar.backgroundColor = .backgroundGreen
+        tabController.tabBar.barTintColor = .backgroundGreen
+        tabController.tabBar.tintColor = .red
 
         tabController.tabBar.items?[0].image = UIImage(named: "test")
         tabController.tabBar.items![0].selectedImage = UIImage(named: "test")
         tabController.tabBar.items?[1].image = UIImage(named: "test")
         tabController.tabBar.items![1].selectedImage = UIImage(named: "test")
+        tabController.tabBar.items?[2].image = UIImage(named: "test")
+        tabController.tabBar.items![2].selectedImage = UIImage(named: "test")
 
         navigationController = UINavigationController(rootViewController: tabController)
+        navigationController.navigationBar.barTintColor = .backgroundGreen
         return navigationController
     }
 }

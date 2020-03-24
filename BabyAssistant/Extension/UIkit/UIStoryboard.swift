@@ -18,5 +18,8 @@ public extension UIStoryboard {
         return UIStoryboard(name: "Trash", bundle: .main)
     }
 
+    static var forum: UIStoryboard {
+        return UIStoryboard(name: "Forum", bundle: .main)
+    }
 }
 

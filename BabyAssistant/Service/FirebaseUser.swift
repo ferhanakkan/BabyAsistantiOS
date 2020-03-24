@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-struct FirebaseService {
+struct FirebaseUser {
  
     internal func resetPassword(email: String, completion: @escaping(Bool) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
@@ -51,4 +51,5 @@ struct FirebaseService {
             completion(true)
         }
     }
+    
 }

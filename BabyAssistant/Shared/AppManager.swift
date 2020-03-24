@@ -11,6 +11,8 @@ struct AppManager {
     
     static var shared = AppManager()
     
+    var selectedForumTopic:String?
+    
     let reachability: Reachability = try! Reachability(hostname: "google.com")
 
     func setReachability() {
@@ -33,6 +35,22 @@ struct AppManager {
             vc.modalPresentationStyle = .overFullScreen
             
             UIApplication.getPresentedViewController()!.present(vc, animated: true)
+        }
+    }
+    
+    public var safeAreaTopInset: CGFloat {
+        if #available(iOS 11.0, *) {
+            return UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0
+        } else {
+            return 0
+        }
+    }
+    
+    public var safeAreaBottomInset: CGFloat {
+        if #available(iOS 11.0, *) {
+            return UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        } else {
+            return 0
         }
     }
 

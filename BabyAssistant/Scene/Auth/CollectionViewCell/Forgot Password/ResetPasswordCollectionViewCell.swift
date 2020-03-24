@@ -14,7 +14,7 @@ class ResetPasswordCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var emailTextField: UITextField!
     
     var delegate : CollectionViewIndexPicker?
-    let firebaseService = FirebaseService()
+    let firebaseService = FirebaseUser()
     
     @IBAction func reserPasswordPressed(_ sender: UIButton) {
         if emailTextField.text! == "" {

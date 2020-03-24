@@ -18,7 +18,7 @@ class NavigationBar {
                 return Tabbar.createTabBarWithNavigationBar(owner: owner)
             } else {
                 return  NavigationBar.navigationBarSplash()
-            }
+            } 
         } else {
             return NavigationBar.navigationBarSplash()
         }

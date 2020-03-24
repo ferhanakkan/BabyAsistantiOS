@@ -21,7 +21,7 @@ class RegisterCollectionViewCell: UICollectionViewCell {
     
     var delegate : CollectionViewIndexPicker?
     
-    let firebaseService = FirebaseService()
+    let firebaseService = FirebaseUser()
     
     
     @IBAction func buttonPressed(_ sender: UIButton) {
