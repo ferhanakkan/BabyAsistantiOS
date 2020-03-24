@@ -45,7 +45,6 @@ final class FirebaseDatabase {
                 if snapshot?.isEmpty != true && snapshot != nil {
                     self.messageArray.removeAll()
                     for document in snapshot!.documents {
-                        
                         if let body = document.get("body") as? String, let sender = document.get("sender") as? String{
                             let data = MessageModel(body: body, sender: sender)
                             self.messageArray.append(data)
@@ -59,10 +58,10 @@ final class FirebaseDatabase {
         }
     }
     
-    internal func sendMessageToTopic(sender: String , message: String) {
+    internal func sendMessageToTopic(message: String) {
         let fireStoreDatabase = Firestore.firestore()
         let docData: [String: Any] = [
-            "sender": sender ,
+            "sender": Auth.auth().currentUser?.displayName,
             "body": message
         ]
         fireStoreDatabase.collection("TopicDatas").document(AppManager.shared.selectedForumTopic!).collection("Message").addDocument(data: docData) { err in

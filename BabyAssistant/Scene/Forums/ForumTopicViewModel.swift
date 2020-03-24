@@ -26,7 +26,7 @@ class ForumTopicViewModel {
         
         owner.tableView!.dataSource = owner
         owner.tableView!.delegate = owner
-        
+    
         owner.tableView!.register(UINib(nibName: "ForumTableViewCell", bundle: nil), forCellReuseIdentifier: "ForumTableViewCell")
 
     }

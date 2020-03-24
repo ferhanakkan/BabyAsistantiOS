@@ -44,11 +44,17 @@
                     <constraint firstAttribute="bottom" secondItem="HlJ-gA-JOv" secondAttribute="bottom" constant="20" id="OyH-iO-2og"/>
                     <constraint firstAttribute="trailing" secondItem="HlJ-gA-JOv" secondAttribute="trailing" constant="20" id="Q0M-KV-AeD"/>
                     <constraint firstItem="sfG-Pz-t2h" firstAttribute="top" secondItem="eC4-9a-19X" secondAttribute="top" constant="20" id="aAN-GJ-MqH"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sfG-Pz-t2h" secondAttribute="bottom" constant="20" id="iEh-Uu-xKs"/>
                     <constraint firstItem="HlJ-gA-JOv" firstAttribute="leading" secondItem="sfG-Pz-t2h" secondAttribute="trailing" constant="20" id="tF4-3m-fgO"/>
                     <constraint firstItem="sfG-Pz-t2h" firstAttribute="leading" secondItem="eC4-9a-19X" secondAttribute="leading" constant="20" id="xQv-xY-hBS"/>
                     <constraint firstItem="sfG-Pz-t2h" firstAttribute="leading" secondItem="eC4-9a-19X" secondAttribute="leading" constant="20" id="y5q-KZ-Rt8"/>
                 </constraints>
             </tableViewCellContentView>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="15"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="askedByLabel" destination="GtT-y5-AhG" id="Rv6-V7-JNi"/>
                 <outlet property="avatarImageView" destination="sfG-Pz-t2h" id="CjJ-1r-6H7"/>

@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 final class MessageViewController: UIViewController {
     
     internal var  tableView: UITableView? = nil
+    internal var  sendButton: UIButton? = nil
+    internal var  messageTextfield: UITextField? = nil
     
     private lazy var messageViewModel = MessageViewModel()
     
@@ -18,6 +21,13 @@ final class MessageViewController: UIViewController {
         super.viewDidLoad()
         messageViewModel.setTableView(self)
         messageViewModel.getMessage(owner: self)
+        messageViewModel.setSenderView(owner: self)
+        sendButton!.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+    }
+    
+    
+    @objc func buttonAction(owner: MessageViewController) {
+        messageViewModel.sendMessage(owner: self)
     }
     
 }
@@ -25,23 +35,49 @@ final class MessageViewController: UIViewController {
 //MARK: - Table View Delegate & DataSource
 
 extension MessageViewController: UITableViewDataSource , UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageViewModel.messageModel.count
+        return 1
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        if indexPath.row == 0 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTopiceTableViewCell", for: indexPath) as! TitleTopiceTableViewCell
-//            cell.askedByLabel.text = messageViewModel.messageModel[indexPath.row].sender
-//            cell.questionLabel.text = messageViewModel.messageModel[indexPath.row].sender
-//            return cell
-//        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MessageTableViewCell", for: indexPath) as! MessageTableViewCell
-            cell.label.text = messageViewModel.messageModel[indexPath.row].body
-    
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTopiceTableViewCell", for: indexPath) as! TitleTopiceTableViewCell
+            cell.askedByLabel.text = messageViewModel.messageModel[indexPath.section].sender
+            cell.questionLabel.text = messageViewModel.messageModel[indexPath.section].body
             return cell
-//        }
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MessageTableViewCell", for: indexPath) as! MessageTableViewCell
+            cell.label.text = messageViewModel.messageModel[indexPath.section].body
+            if Auth.auth().currentUser!.displayName == messageViewModel.messageModel[indexPath.section].sender {
+                cell.leftImageView.isHidden = true
+                cell.backgroundColor = .backgroundGreen
+                cell.messageBubble.backgroundColor = .gray
+            } else {
+                cell.rightImageView.isHidden = true
+                cell.backgroundColor = .gray
+            }
+            return cell
+        }
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return messageViewModel.messageModel.count
+    }
+    
+    // Set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 3
+    }
+    
+    // Make the background color show through
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
     
 }

@@ -64,6 +64,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="oDX-cX-l9a"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="15"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="label" destination="fX4-UL-Gca" id="0s8-6d-fRa"/>
                 <outlet property="leftImageView" destination="be0-uK-Imy" id="VsO-os-XpP"/>
