@@ -12,16 +12,17 @@ import Firebase
 class NavigationBar {
     
     class func createNavigatonController(owner: Any) -> UINavigationController{
-        let currentUser = Auth.auth().currentUser
-        if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
-            if currentUser != nil && rememberMe {
-                return Tabbar.createTabBarWithNavigationBar(owner: owner)
-            } else {
-                return  NavigationBar.navigationBarSplash()
-            } 
-        } else {
+//        let currentUser = Auth.auth().currentUser
+//        if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
+//            if currentUser != nil && rememberMe {
+////                return Tabbar.createTabBarWithNavigationBar(owner: owner)
+//                return NavigationBar.navigationBarSplash()
+//            } else {
+//                return  NavigationBar.navigationBarSplash()
+//            }
+//        } else {
             return NavigationBar.navigationBarSplash()
-        }
+        
     }
 
     class func navigationBarSplash() -> UINavigationController {

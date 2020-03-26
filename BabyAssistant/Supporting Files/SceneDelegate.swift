@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -18,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let newScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: newScene)
-        window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
+        selectRoot()
         window?.makeKeyAndVisible()
         
     }
@@ -51,6 +52,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    private func selectRoot() {
+        let currentUser = Auth.auth().currentUser
+        if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
+            if currentUser != nil && rememberMe {
+                window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
+            } else {
+                window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
+            }
+            
+        } else {
+            window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
+        }
+    }
 
 }
 

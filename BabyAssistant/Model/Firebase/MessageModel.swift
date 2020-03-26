@@ -9,6 +9,7 @@
 import Foundation
 
 struct MessageModel {
-    let body: String
-    let sender: String
+    let title: String
+    let subtitle: String
+    let username: String
 }

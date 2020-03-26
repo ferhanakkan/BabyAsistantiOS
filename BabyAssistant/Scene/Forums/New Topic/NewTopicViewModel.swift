@@ -111,21 +111,13 @@ extension NewTopicViewModel {
         
         owner.chechBox?.snp.makeConstraints({ (make) in
             make.height.width.equalTo(30)
-//            make.top.equalTo((owner.subTitleTextfield?.snp.bottom)!).offset(20)
             make.centerY.equalTo(title)
             make.leading.equalTo(title.snp.trailing).offset(20)
             make.trailing.equalToSuperview().offset(-20)
         })
         
     }
-    
-//     func rememberMeSetter() {
-//        if owner.chechBox {
-//            UserDefaults.standard.setValue(true, forKey: "rememberMe")
-//        } else {
-//           UserDefaults.standard.setValue(false, forKey: "rememberMe")
-//        }
-//    }
+
 }
 
 //MARK: - Button Actions
@@ -134,7 +126,9 @@ extension NewTopicViewModel {
     
     func createTopic(owner: NewTopicViewController) {
         if owner.titleTextfield?.text != "" && owner.subTitleTextfield?.text != "" {
-            firebase.setTopicTitle(title: owner.titleTextfield!.text!, subtitle: owner.subTitleTextfield!.text!, usernameController: owner.chechBox!.on )
+            firebase.setTopicTitle(title: owner.titleTextfield!.text!, subtitle: owner.subTitleTextfield!.text!, usernameController: owner.chechBox!.on) { (_) in
+                owner.dismiss(animated: true, completion: nil)
+            }
         } else {
             AppManager.shared.messagePresent(title: "OOPS", message: "Please chech title and subtitle can't be empty", type: .error)
         }

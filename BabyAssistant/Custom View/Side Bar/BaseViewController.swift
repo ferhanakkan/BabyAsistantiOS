@@ -13,23 +13,24 @@ class BaseViewController: UIViewController {
     var sidebarView: SidebarView!
     var blackScreen: UIView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-            self.navigationController?.navigationItem.title = "test"
-        self.tabBarController?.navigationController?.navigationItem.title = "ferhan title nav"
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let btnMenu = UIBarButtonItem(image: UIImage(named: "eye"), style: .plain, target: self, action: #selector(btnMenuAction))
-        btnMenu.tintColor=UIColor(red: 54/255, green: 55/255, blue: 56/255, alpha: 1.0)
-        self.navigationItem.leftBarButtonItem = btnMenu
-        self.tabBarController?.navigationController?.navigationItem.rightBarButtonItem = btnMenu
+        navigationController?.navigationBar.barTintColor = .backgroundGreen
+
+        let navigationBarRightButton = UIBarButtonItem()
+        let button = UIButton()
+        button.setImage(UIImage(named: "avatar"), for: .normal)
+        button.cornerRadius = 15
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        button.addTarget(self, action: #selector(btnMenuAction), for: .touchUpInside)
+        navigationBarRightButton.customView = button
+        button.imageView?.contentMode = .scaleToFill
+        self.navigationItem.rightBarButtonItem = navigationBarRightButton
         
-        self.tabBarController?.navigationController?.navigationItem.title = "ferhan title nav"
-        self.navigationController?.navigationItem.title = "test"
-        
+            
         sidebarView=SidebarView(frame: CGRect(x: 0, y: 0, width: 0, height: self.view.frame.height))
         sidebarView.delegate=self
         sidebarView.layer.zPosition=100

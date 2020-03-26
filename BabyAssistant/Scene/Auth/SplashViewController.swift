@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-final class SplashViewController: UIViewController , CollectionViewIndexPicker {
+final class SplashViewController: BaseViewController , CollectionViewIndexPicker {
     
     private let splashViewModel = SplashViewModel()
     

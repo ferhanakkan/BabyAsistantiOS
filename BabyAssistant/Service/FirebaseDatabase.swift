@@ -45,8 +45,8 @@ final class FirebaseDatabase {
                 if snapshot?.isEmpty != true && snapshot != nil {
                     self.messageArray.removeAll()
                     for document in snapshot!.documents {
-                        if let body = document.get("body") as? String, let username = document.get("Username") as? String{
-                            let data = MessageModel(body: body, sender: username)
+                        if let title = document.get("Title") as? String, let username = document.get("Username") as? String, let subtitle = document.get("Subtitle") as? String{
+                            let data = MessageModel(title: title,subtitle: subtitle, username: username)
                             self.messageArray.append(data)
                         }
                     }
@@ -66,7 +66,8 @@ final class FirebaseDatabase {
         let fireStoreDatabase = Firestore.firestore()
         let docData: [String: Any] = [
             "Username": Auth.auth().currentUser?.displayName,
-            "body": message,
+            "Title": message,
+            "Subtitle": "",
             "Time": Date().timeIntervalSince1970
         ]
         fireStoreDatabase.collection("TopicDatas").document(AppManager.shared.selectedForumTopic!).collection("Message").addDocument(data: docData) { err in
@@ -78,7 +79,7 @@ final class FirebaseDatabase {
         }
     }
     
-    internal func setTopicTitle(title: String, subtitle: String, usernameController:Bool) {
+    internal func setTopicTitle(title: String, subtitle: String, usernameController:Bool, completion: @escaping(Bool) -> Void) {
         let fireStoreDatabase = Firestore.firestore()
         var username = ""
         if usernameController {
@@ -104,6 +105,9 @@ final class FirebaseDatabase {
                 AppManager.shared.messagePresent(title: "OOPS", message: err as! String , type: .error)
             } else {
                 print("Document successfully written!")
+                DispatchQueue.main.async {
+                    completion(true)
+                }
             }
         }
 

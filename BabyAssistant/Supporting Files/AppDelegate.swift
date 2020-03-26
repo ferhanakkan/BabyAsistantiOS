@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
+        selectRoot()
         window?.makeKeyAndVisible()
         
         return true
@@ -73,14 +73,29 @@ extension AppDelegate {
             }
             userDefaults.synchronize()
         }
-
+        
     }
-
-//MARK: Set Keyboard
+    
+    //MARK: Set Keyboard
     
     func setKeyboard() {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+    }
+    
+    //MARK: - Select Root
+    private func selectRoot() {
+        let currentUser = Auth.auth().currentUser
+        if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
+            if currentUser != nil && rememberMe {
+                window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
+            } else {
+                window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
+            }
+            
+        } else {
+            window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
+        }
     }
 }
 

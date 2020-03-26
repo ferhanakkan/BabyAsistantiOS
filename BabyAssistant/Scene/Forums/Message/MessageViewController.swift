@@ -45,13 +45,13 @@ extension MessageViewController: UITableViewDataSource , UITableViewDelegate {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTopiceTableViewCell", for: indexPath) as! TitleTopiceTableViewCell
-            cell.askedByLabel.text = messageViewModel.messageModel[indexPath.section].sender
-            cell.questionLabel.text = messageViewModel.messageModel[indexPath.section].body
+            cell.askedByLabel.text = messageViewModel.messageModel[indexPath.section].username
+            cell.questionLabel.text = messageViewModel.messageModel[indexPath.section].title
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MessageTableViewCell", for: indexPath) as! MessageTableViewCell
-            cell.label.text = messageViewModel.messageModel[indexPath.section].body
-            if Auth.auth().currentUser!.displayName == messageViewModel.messageModel[indexPath.section].sender {
+            cell.label.text = messageViewModel.messageModel[indexPath.section].title
+            if Auth.auth().currentUser!.displayName == messageViewModel.messageModel[indexPath.section].username {
                 cell.leftImageView.isHidden = true
                 cell.backgroundColor = .backgroundGreen
                 cell.messageBubble.backgroundColor = .gray

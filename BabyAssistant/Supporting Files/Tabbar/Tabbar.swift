@@ -10,12 +10,12 @@
 import UIKit
 
 class Tabbar {
-    class func createTabBarWithNavigationBar(owner: Any) -> UINavigationController {
-        var navigationController = UINavigationController()
+    class func createTabBarWithNavigationBar(owner: Any) -> UITabBarController {
+//        var navigationController = UINavigationController()
         let tabController = UITabBarController()
 
         //Storyboard usage
-        let homePage = NewTopicViewController()
+        let homePage = UIStoryboard.trash.instantiateViewController(withIdentifier: "TrashDataViewController") as! TrashDataViewController
         
         let profilePage = UIStoryboard.trash.instantiateViewController(withIdentifier: "TrashDataViewController") as! TrashDataViewController
         
@@ -26,7 +26,8 @@ class Tabbar {
         profilePage.title = "Profile"
         forum.title = "Forum"
 
-        tabController.viewControllers = [homePage,profilePage,forum]
+        tabController.viewControllers = [UINavigationController(rootViewController: homePage),UINavigationController(rootViewController: profilePage),UINavigationController(rootViewController: forum)]
+        
         tabController.tabBar.backgroundColor = .backgroundGreen
         tabController.tabBar.barTintColor = .backgroundGreen
         tabController.tabBar.tintColor = .red
@@ -38,12 +39,12 @@ class Tabbar {
         tabController.tabBar.items?[2].image = UIImage(named: "test")
         tabController.tabBar.items![2].selectedImage = UIImage(named: "test")
 
-        navigationController = UINavigationController(rootViewController: tabController)
-        navigationController.navigationBar.barTintColor = .backgroundGreen
-        
-        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.gray]
-        navigationController.navigationBar.tintColor = .gray
-        navigationController.navigationBar.barStyle = .black
-        return navigationController
+//        navigationController = UINavigationController(rootViewController: tabController)
+//        navigationController.navigationBar.barTintColor = .backgroundGreen
+//
+//        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.gray]
+//        navigationController.navigationBar.tintColor = .gray
+//        navigationController.navigationBar.barStyle = .black
+        return tabController
     }
 }

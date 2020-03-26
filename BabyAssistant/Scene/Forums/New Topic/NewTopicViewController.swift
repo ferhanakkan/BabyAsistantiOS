@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import BEMCheckBox
 
-final class NewTopicViewController: UIViewController {
+final class NewTopicViewController: BaseViewController {
     
     internal lazy var mainSubView:UIView? = nil
     internal lazy var titleTextfield:UITextField? = nil

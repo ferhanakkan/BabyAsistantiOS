@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ForumTopicViewController: UIViewController {
+final class ForumTopicViewController: BaseViewController {
     
     internal var  tableView: UITableView? = nil
     
