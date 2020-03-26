@@ -13,7 +13,7 @@ final class SplashViewController: UIViewController , CollectionViewIndexPicker {
     
     private let splashViewModel = SplashViewModel()
     
-    internal lazy var imageView:UIView? = nil
+    internal lazy var imageView:UIImageView? = nil
     
     internal var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -44,7 +44,7 @@ final class SplashViewController: UIViewController , CollectionViewIndexPicker {
 extension SplashViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -64,3 +64,11 @@ extension SplashViewController: UICollectionViewDelegate, UICollectionViewDataSo
         splashViewModel.collectionViewSetShowCell(row: row, owner: self)
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
+//extension  SplashViewController {
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return splashViewModel.setCollectionViewCellFlow(self)
+//    }
+//}

@@ -34,6 +34,7 @@ class NavigationBar {
         
         
         let appStartPoint = UIStoryboard.auth.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
+//        let appStartPoint = NewTopicViewController()
         
         navigationController.setViewControllers([appStartPoint], animated: true)
         return navigationController

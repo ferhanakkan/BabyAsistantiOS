@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		365942052426C95900211840 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365942042426C95900211840 /* FirebaseUser.swift */; };
+		36824319242CF31700F0B5AD /* NewTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36824318242CF31700F0B5AD /* NewTopicViewController.swift */; };
+		3682431B242CFD9C00F0B5AD /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682431A242CFD9B00F0B5AD /* UIButton.swift */; };
+		3682431D242CFEE000F0B5AD /* NewTopicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682431C242CFEE000F0B5AD /* NewTopicViewModel.swift */; };
 		368739DC242525CE00025E1A /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368739DB242525CE00025E1A /* SplashViewModel.swift */; };
 		368739DF242557EC00025E1A /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368739DE242557EC00025E1A /* UINavigationController.swift */; };
 		368744DD242A55820051535A /* Forum.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 368744DC242A55820051535A /* Forum.storyboard */; };
@@ -66,6 +69,9 @@
 		0E712C5CF1E0CC271A0B1AD4 /* Pods-BabyAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyAssistant.release.xcconfig"; path = "Target Support Files/Pods-BabyAssistant/Pods-BabyAssistant.release.xcconfig"; sourceTree = "<group>"; };
 		3485CFB9A944D54237B4A305 /* Pods-BabyAssistant.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyAssistant.test.xcconfig"; path = "Target Support Files/Pods-BabyAssistant/Pods-BabyAssistant.test.xcconfig"; sourceTree = "<group>"; };
 		365942042426C95900211840 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
+		36824318242CF31700F0B5AD /* NewTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTopicViewController.swift; sourceTree = "<group>"; };
+		3682431A242CFD9B00F0B5AD /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		3682431C242CFEE000F0B5AD /* NewTopicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTopicViewModel.swift; sourceTree = "<group>"; };
 		368739DB242525CE00025E1A /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		368739DE242557EC00025E1A /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		368744DC242A55820051535A /* Forum.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Forum.storyboard; sourceTree = "<group>"; };
@@ -146,6 +152,15 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		36824317242CF2DD00F0B5AD /* New Topic */ = {
+			isa = PBXGroup;
+			children = (
+				36824318242CF31700F0B5AD /* NewTopicViewController.swift */,
+				3682431C242CFEE000F0B5AD /* NewTopicViewModel.swift */,
+			);
+			path = "New Topic";
+			sourceTree = "<group>";
+		};
 		368739DD242533E000025E1A /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +174,7 @@
 		368744DB242A55700051535A /* Forums */ = {
 			isa = PBXGroup;
 			children = (
+				36824317242CF2DD00F0B5AD /* New Topic */,
 				36ADC8B4242A7F2B00F4849E /* Cell */,
 				368744EA242A695E0051535A /* Message */,
 				368744DC242A55820051535A /* Forum.storyboard */,
@@ -370,6 +386,7 @@
 				369B9B36242008C40000B426 /* UIColor.swift */,
 				369B9B38242008D50000B426 /* UIViewController.swift */,
 				368739DE242557EC00025E1A /* UINavigationController.swift */,
+				3682431A242CFD9B00F0B5AD /* UIButton.swift */,
 			);
 			path = UIkit;
 			sourceTree = "<group>";
@@ -656,6 +673,7 @@
 				368744DF242A55A80051535A /* ForumTopicViewController.swift in Sources */,
 				368739DF242557EC00025E1A /* UINavigationController.swift in Sources */,
 				36ADC8BC242A838A00F4849E /* MessageViewModel.swift in Sources */,
+				36824319242CF31700F0B5AD /* NewTopicViewController.swift in Sources */,
 				369B9B4F2421502D0000B426 /* SplashViewController.swift in Sources */,
 				369B9AFE241FC0EC0000B426 /* AppDelegate.swift in Sources */,
 				369B9B39242008D50000B426 /* UIViewController.swift in Sources */,
@@ -669,6 +687,8 @@
 				369B9B4524200A120000B426 /* LoadingView.swift in Sources */,
 				368744E9242A64990051535A /* MessageModel.swift in Sources */,
 				369B9B2F2420085F0000B426 /* Array.swift in Sources */,
+				3682431D242CFEE000F0B5AD /* NewTopicViewModel.swift in Sources */,
+				3682431B242CFD9C00F0B5AD /* UIButton.swift in Sources */,
 				369B9B52242150CC0000B426 /* TrashDataViewController.swift in Sources */,
 				369B9B1E242007510000B426 /* Tabbar.swift in Sources */,
 				369B9B21242007A40000B426 /* NavigationBar.swift in Sources */,

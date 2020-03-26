@@ -15,7 +15,7 @@ class Tabbar {
         let tabController = UITabBarController()
 
         //Storyboard usage
-        let homePage = UIStoryboard.trash.instantiateViewController(withIdentifier: "TrashDataViewController") as! TrashDataViewController
+        let homePage = NewTopicViewController()
         
         let profilePage = UIStoryboard.trash.instantiateViewController(withIdentifier: "TrashDataViewController") as! TrashDataViewController
         

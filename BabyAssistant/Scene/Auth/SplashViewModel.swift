@@ -11,6 +11,8 @@ import SnapKit
 
 struct SplashViewModel {
     
+    //MARK: - Set UI
+    
     internal func setGreenView(owner: SplashViewController) {
         
         let greenView = UIView()
@@ -33,7 +35,7 @@ struct SplashViewModel {
         owner.collectionView.isScrollEnabled = false
         owner.collectionView.snp.makeConstraints { (make) in
             make.leading.equalToSuperview().offset(20)
-            make.top.equalToSuperview().offset(160)
+            make.top.equalTo(owner.imageView!.snp.bottom).offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalToSuperview().offset(-20)
  
@@ -41,28 +43,23 @@ struct SplashViewModel {
     }
         
     internal func setImage(_ owner: SplashViewController) {
-        let view = UIView()
-        view.backgroundColor = .white
-        let image = UIImage(named: "babylogo.jpg")!
-        
+
         let myImageView:UIImageView = UIImageView()
-        myImageView.contentMode = UIView.ContentMode.scaleAspectFit
-        myImageView.frame.size.width = 100
-        myImageView.frame.size.height = 100
-        myImageView.center = view.center
+        myImageView.contentMode = .scaleAspectFit
+        myImageView.image = UIImage(named: "babylogo.jpg")!
         
-        myImageView.image = image
-        view.addSubview(myImageView)
-        
-        owner.imageView = view
-        owner.imageView?.frame.size.width = 100
-        owner.imageView?.frame.size.height = 100
+        owner.imageView = myImageView
         owner.view.addSubview(owner.imageView!)
+        
         owner.imageView!.snp.makeConstraints { (make) in
-            make.center.centerX.equalTo(owner.view.center.x)
-            make.top.equalToSuperview().offset(60)
+            make.width.equalTo(100)
+            make.height.equalTo(100)
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(20)
         }
     }
+    
+    //MARK: - Collection View Logic's
     
     
     internal func collectionViewSetup(owner: SplashViewController) {
@@ -109,4 +106,13 @@ struct SplashViewModel {
             return cell
         }
     }
+//    
+//    func setCollectionViewCellFlow(_ owner: SplashViewController) -> CGSize {
+//            let availableWidth = owner.collectionView.frame.width
+//            let sectionInset: CGFloat = 20.0
+//            let cellSpacing: CGFloat = 15.0
+//            let cellWidth = (availableWidth - sectionInset * 2 - cellSpacing) / 1
+//            let cellSize = CGSize(width: cellWidth.rounded(.down), height: 300)
+//            return cellSize
+//    }
 }

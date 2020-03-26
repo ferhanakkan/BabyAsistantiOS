@@ -38,15 +38,15 @@ final class FirebaseDatabase {
     
     internal func getSelectedTopicMessage(owner: MessageViewController ,completion: @escaping([MessageModel]) -> Void) {
         let fireStoreDatabase = Firestore.firestore()
-        fireStoreDatabase.collection("TopicDatas").document(AppManager.shared.selectedForumTopic!).collection("Message").order(by: "time").addSnapshotListener { (snapshot, error) in
+        fireStoreDatabase.collection("TopicDatas").document(AppManager.shared.selectedForumTopic!).collection("Message").order(by: "Time").addSnapshotListener { (snapshot, error) in
             if error != nil {
                 print(error!)
             } else {
                 if snapshot?.isEmpty != true && snapshot != nil {
                     self.messageArray.removeAll()
                     for document in snapshot!.documents {
-                        if let body = document.get("body") as? String, let sender = document.get("sender") as? String{
-                            let data = MessageModel(body: body, sender: sender)
+                        if let body = document.get("body") as? String, let username = document.get("Username") as? String{
+                            let data = MessageModel(body: body, sender: username)
                             self.messageArray.append(data)
                         }
                     }
@@ -65,9 +65,9 @@ final class FirebaseDatabase {
     internal func sendMessageToTopic(message: String) {
         let fireStoreDatabase = Firestore.firestore()
         let docData: [String: Any] = [
-            "sender": Auth.auth().currentUser?.displayName,
+            "Username": Auth.auth().currentUser?.displayName,
             "body": message,
-            "time": Date().timeIntervalSince1970
+            "Time": Date().timeIntervalSince1970
         ]
         fireStoreDatabase.collection("TopicDatas").document(AppManager.shared.selectedForumTopic!).collection("Message").addDocument(data: docData) { err in
             if let err = err {
@@ -76,6 +76,37 @@ final class FirebaseDatabase {
                 print("Document successfully written!")
             }
         }
+    }
+    
+    internal func setTopicTitle(title: String, subtitle: String, usernameController:Bool) {
+        let fireStoreDatabase = Firestore.firestore()
+        var username = ""
+        if usernameController {
+            username = (Auth.auth().currentUser?.displayName)!
+        } else {
+            username = "Anonymous"
+        }
+         let docData: [String: Any] = [
+             "Username": username,
+             "Title": title,
+             "Subtitle": subtitle,
+             "Time": Date().timeIntervalSince1970
+         ]
+         fireStoreDatabase.collection("TopicDatas").document(title).collection("Message").addDocument(data: docData) { err in
+             if let err = err {
+                 AppManager.shared.messagePresent(title: "OOPS", message: err as! String , type: .error)
+             } else {
+                 print("Document successfully written!")
+             }
+         }
+        fireStoreDatabase.collection("Topics").document(title).setData(docData) { err in
+            if let err = err {
+                AppManager.shared.messagePresent(title: "OOPS", message: err as! String , type: .error)
+            } else {
+                print("Document successfully written!")
+            }
+        }
+
     }
     
 }
