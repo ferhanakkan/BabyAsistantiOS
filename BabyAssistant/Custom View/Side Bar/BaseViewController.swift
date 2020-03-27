@@ -12,10 +12,10 @@ class BaseViewController: UIViewController {
 
     var sidebarView: SidebarView!
     var blackScreen: UIView!
+    var firebaseUser = FirebaseUser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationController?.navigationBar.barTintColor = .backgroundGreen
 
         let navigationBarRightButton = UIBarButtonItem()
@@ -28,7 +28,8 @@ class BaseViewController: UIViewController {
         button.addTarget(self, action: #selector(btnMenuAction), for: .touchUpInside)
         navigationBarRightButton.customView = button
         button.imageView?.contentMode = .scaleToFill
-        self.navigationItem.rightBarButtonItem = navigationBarRightButton
+        self.navigationItem.leftBarButtonItem = navigationBarRightButton
+        
         
             
         sidebarView=SidebarView(frame: CGRect(x: 0, y: 0, width: 0, height: self.view.frame.height))
@@ -78,11 +79,10 @@ extension BaseViewController: SidebarViewDelegate {
         case .settings:
             print("Settings")
         case .signOut:
-            print("Sign out")
+            firebaseUser.signOut()
         case .none:
             break
             //        default:  //Default will never be executed
-            //            break
         }
     }
 }

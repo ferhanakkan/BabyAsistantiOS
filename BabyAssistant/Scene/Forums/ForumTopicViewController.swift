@@ -16,8 +16,16 @@ final class ForumTopicViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        forumTopicViewModel.setTableView(self)
-        forumTopicViewModel.getTopics(owner: self)
+        DispatchQueue.main.async {
+            self.forumTopicViewModel.setTableView(self)
+            self.forumTopicViewModel.getTopics(owner: self)
+
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newTitleButtonPressed))
     }
     
 }
@@ -42,7 +50,14 @@ extension ForumTopicViewController: UITableViewDataSource , UITableViewDelegate 
         tableView.deselectRow(at: indexPath, animated: true)
         if let vc = UIStoryboard.forum.instantiateViewController(withIdentifier: "MessageViewController") as? MessageViewController {
             AppManager.shared.selectedForumTopic = forumTopicViewModel.topicsModel[indexPath.row].title
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.show(vc, sender: nil)
         }
+    }
+    
+    @objc private func newTitleButtonPressed() {
+        let vc = NewTopicViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc,animated: true)
     }
 }

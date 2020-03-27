@@ -37,6 +37,7 @@ class ForumTopicViewModel {
             owner.tableView?.reloadData()
         }
     }
+    
 
     
 }

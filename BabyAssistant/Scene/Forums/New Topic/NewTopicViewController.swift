@@ -38,6 +38,6 @@ final class NewTopicViewController: BaseViewController {
     }
     
     @objc func cancelTopic() {
-        newTopicViewModel.createTopic(owner: self)
+        newTopicViewModel.cancelTopic(owner: self)
     }
 }

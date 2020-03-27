@@ -42,8 +42,9 @@ class MessageViewModel {
         owner.view.addSubview(view)
         
         view.snp.makeConstraints { (make) in
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(65)
+            make.bottom.equalTo(AppManager.shared.safeAreaBottomInset)
         }
         
         owner.sendButton = UIButton()

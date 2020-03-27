@@ -39,7 +39,7 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor=UIColor(red: 54/255, green: 55/255, blue: 56/255, alpha: 1.0)
+        self.backgroundColor = .backgroundGreen
         self.clipsToBounds=true
         
         titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Default Name")", "Settings", "Sign Out"]
@@ -66,7 +66,7 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
         if indexPath.row == 0 {
-            cell.backgroundColor=UIColor(red: 77/255, green: 77/255, blue: 77/255, alpha: 1.0)
+            cell.backgroundColor = .backgroundGreen
             let cellImg: UIImageView!
             cellImg = UIImageView(frame: CGRect(x: 15, y: 10, width: 80, height: 80))
             cellImg.layer.cornerRadius = 40
@@ -81,10 +81,10 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
             cell.addSubview(cellLbl)
             cellLbl.text = titleArr[indexPath.row]
             cellLbl.font=UIFont.systemFont(ofSize: 17)
-            cellLbl.textColor=UIColor.white
+            cellLbl.textColor=UIColor.gray
         } else {
             cell.textLabel?.text=titleArr[indexPath.row]
-            cell.textLabel?.textColor=UIColor.white
+            cell.textLabel?.textColor=UIColor.gray
         }
         return cell
     }
