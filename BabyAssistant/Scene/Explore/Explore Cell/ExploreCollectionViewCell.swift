@@ -43,6 +43,7 @@ final class ExploreCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        contentView.cornerRadius = 15
         contentView.addSubview(image)
         image.addSubview(title)
         image.addSubview(subTitle)

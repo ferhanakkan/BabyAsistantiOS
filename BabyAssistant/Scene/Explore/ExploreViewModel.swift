@@ -8,8 +8,13 @@
 
 import UIKit
 import SnapKit
+import Firebase
 
 final class ExploreViewModel {
+    
+    let firebase = FirebaseDatabase()
+    
+    lazy var exploreArray: [ExploreModel] = []
     
     //MARK: - Setup UI
     
@@ -50,8 +55,13 @@ final class ExploreViewModel {
         
     }
     
-    
-    
+    internal func fetchData(completion: @escaping(Bool) -> Void) {
+        firebase.getExploreTopics { (data) in
+            self.exploreArray = data
+            completion(true)
+        }
+        
+    }
     
 }
 

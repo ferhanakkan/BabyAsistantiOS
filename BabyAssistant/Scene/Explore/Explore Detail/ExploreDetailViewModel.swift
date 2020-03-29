@@ -11,6 +11,10 @@ import SnapKit
 
 final class ExploreDetailViewModel {
     
+    lazy var titleData:ExploreModel? = nil
+    lazy var exploreDetailArray:[ExploreDetailModel]? = nil
+    lazy var firebase = FirebaseDatabase()
+    
     //MARK: - Setup UI
     
     internal func setUI(_ owner: ExploreDetailViewController) {
@@ -37,6 +41,7 @@ final class ExploreDetailViewModel {
         owner.collectionView = collectionView
         owner.view.addSubview(owner.collectionView!)
         owner.collectionView?.backgroundColor = .red
+        owner.collectionView?.isUserInteractionEnabled = false
         
         owner.collectionView!.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
@@ -52,7 +57,12 @@ final class ExploreDetailViewModel {
     }
     
     
-    
+    internal func fetchData(title:String, completion: @escaping(Bool)->Void) {
+        firebase.getExploreDetails(title: title) { (data) in
+            self.exploreDetailArray = data
+            completion(true)
+        }
+    }
     
 }
 

@@ -18,6 +18,7 @@ protocol SidebarViewDelegate: class {
 enum Row: String {
     case editProfile
     case settings
+    case rate
     case signOut
     case none
     
@@ -25,7 +26,8 @@ enum Row: String {
         switch row {
         case 0: self = .editProfile
         case 1: self = .settings
-        case 2: self = .signOut
+        case 2: self = .rate
+        case 3: self = .signOut
         default: self = .none
         }
     }
@@ -42,7 +44,7 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.backgroundColor = .backgroundGreen
         self.clipsToBounds=true
         
-        titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Default Name")", "Settings", "Sign Out"]
+        titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Default Name")","Settings","Rate Us",  "Sign Out"]
         
         setupViews()
         

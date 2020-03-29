@@ -40,13 +40,12 @@ final class ExploreDetailCollectionViewCell: UICollectionViewCell {
         image.snp.makeConstraints { (make) in
             make.top.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
-            make.bottom.equalTo(title.snp.top).offset(30)
         }
         
         title.snp.makeConstraints { (make) in
             make.leading.equalToSuperview().offset(30)
-            make.trailing.equalToSuperview().offset(-30)
-            make.bottom.equalTo(title.snp.top).offset(30)
+            make.trailing.bottom.equalToSuperview().offset(-30)
+            make.top.equalTo(image.snp.bottom).offset(30)
         }
         
     }

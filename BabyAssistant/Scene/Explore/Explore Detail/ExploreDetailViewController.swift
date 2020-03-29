@@ -14,28 +14,43 @@ final class ExploreDetailViewController : UIViewController {
     
     internal var collectionView: UICollectionView? = nil
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         exploreDetailViewModel.setUI(self)
+        exploreDetailViewModel.fetchData(title: exploreDetailViewModel.titleData!.title) { (_) in
+            self.collectionView?.reloadData()
+        }
     }
     
 }
 
 extension ExploreDetailViewController: UICollectionViewDelegate ,UICollectionViewDataSource  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return 4
-     }
-     
-     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let count = exploreDetailViewModel.exploreDetailArray?.count {
+            return count+1
+        } else {
+           return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        switch indexPath.row {
-        case 0:
+        if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreDetailTitleCollectionViewCell", for: indexPath) as! ExploreDetailTitleCollectionViewCell
+            cell.title.text = exploreDetailViewModel.titleData?.title
+            DispatchQueue.main.async {
+                cell.image.kf.setImage(with: self.exploreDetailViewModel.titleData!.image)
+            }
             return cell
-        default:
+            
+        } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreDetailCollectionViewCell", for: indexPath) as! ExploreDetailCollectionViewCell
+            cell.title.text = exploreDetailViewModel.exploreDetailArray![indexPath.row-1].title
+            DispatchQueue.main.async {
+                cell.image.kf.setImage(with: self.exploreDetailViewModel.exploreDetailArray![indexPath.row-1].imageUrl)
+            }
             return cell
         }
-     }
+    }
 }
-

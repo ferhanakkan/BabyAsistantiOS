@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Kingfisher
+import StoreKit
 
 class BaseViewController: UIViewController  {
     
@@ -19,7 +20,6 @@ class BaseViewController: UIViewController  {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewwillapperar ")
         DispatchQueue.main.async {
             self.imageSetter()
         }
@@ -49,6 +49,7 @@ class BaseViewController: UIViewController  {
     }
     
     @objc func btnMenuAction() {
+        tabBarController?.tabBar.isHidden = true
         sidebarView.myTableView.reloadData()
         blackScreen.isHidden=false
         UIView.animate(withDuration: 0.3, animations: {
@@ -59,6 +60,7 @@ class BaseViewController: UIViewController  {
     }
     
     @objc func blackScreenTapAction(sender: UITapGestureRecognizer) {
+        tabBarController?.tabBar.isHidden = false
         blackScreen.isHidden=true
         blackScreen.frame=self.view.bounds
         UIView.animate(withDuration: 0.3) {
@@ -92,6 +94,7 @@ class BaseViewController: UIViewController  {
 
 extension BaseViewController: SidebarViewDelegate {
     func sidebarDidSelectRow(row: Row) {
+        tabBarController?.tabBar.isHidden = false
         blackScreen.isHidden=true
         blackScreen.frame=self.view.bounds
         UIView.animate(withDuration: 0.3) {
@@ -102,6 +105,8 @@ extension BaseViewController: SidebarViewDelegate {
             let vc = SettingViewController()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.show(vc, sender: nil)
+        case .rate:
+            SKStoreReviewController.requestReview()
         case .signOut:
             firebaseUser.signOut()
         case .none:

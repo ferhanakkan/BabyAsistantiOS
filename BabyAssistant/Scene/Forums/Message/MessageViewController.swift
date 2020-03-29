@@ -55,13 +55,16 @@ extension MessageViewController: UITableViewDataSource , UITableViewDelegate {
             if Auth.auth().currentUser!.displayName == messageViewModel.messageModel[indexPath.section].username {
                 cell.rightImageView.layer.borderColor = UIColor.gray.cgColor
                 cell.leftImageView.isHidden = true
+                cell.rightImageView.isHidden = false
                 cell.backgroundColor = .backgroundGreen
                 cell.messageBubble.backgroundColor = .gray
                 
             } else {
                 cell.leftImageView.layer.borderColor = UIColor.backgroundGreen.cgColor
                 cell.rightImageView.isHidden = true
+                cell.leftImageView.isHidden = false
                 cell.backgroundColor = .gray
+                cell.messageBubble.backgroundColor = .backgroundGreen
             }
             return cell
         }
@@ -73,7 +76,7 @@ extension MessageViewController: UITableViewDataSource , UITableViewDelegate {
     
     // Set the spacing between sections
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 3
+        return 5
     }
     
     // Make the background color show through
@@ -81,6 +84,10 @@ extension MessageViewController: UITableViewDataSource , UITableViewDelegate {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

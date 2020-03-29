@@ -22,9 +22,9 @@ final class ExploreDetailTitleCollectionViewCell: UICollectionViewCell {
     let title: UILabel = {
         let title = UILabel()
         title.numberOfLines = 0
-        title.textAlignment = .center
-        title.font = UIFont.systemFont(ofSize: 15)
-        title.textColor = .black
+        title.textAlignment = .left
+        title.font = UIFont.boldSystemFont(ofSize: 25)
+        title.textColor = .white
         title.text = "Test Yazisi"
         return title
     }()
@@ -45,7 +45,7 @@ final class ExploreDetailTitleCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(50)
             make.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
-            make.bottom.equalTo(title.snp.top).offset(30)
+            make.bottom.equalTo(image.snp.bottom).offset(-20)
         }
         
     }

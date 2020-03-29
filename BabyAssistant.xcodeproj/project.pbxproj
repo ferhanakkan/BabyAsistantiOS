@@ -19,6 +19,8 @@
 		365942052426C95900211840 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365942042426C95900211840 /* FirebaseUser.swift */; };
 		365B0E402430C06D005925B3 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B0E3F2430C06D005925B3 /* UIImage.swift */; };
 		365B0E442430F785005925B3 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B0E432430F785005925B3 /* LanguageViewController.swift */; };
+		365B0E4624312176005925B3 /* ExploreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B0E4524312176005925B3 /* ExploreModel.swift */; };
+		365B0E48243127C1005925B3 /* ExploreDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365B0E47243127C1005925B3 /* ExploreDetailModel.swift */; };
 		36824319242CF31700F0B5AD /* NewTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36824318242CF31700F0B5AD /* NewTopicViewController.swift */; };
 		3682431B242CFD9C00F0B5AD /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682431A242CFD9B00F0B5AD /* UIButton.swift */; };
 		3682431D242CFEE000F0B5AD /* NewTopicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682431C242CFEE000F0B5AD /* NewTopicViewModel.swift */; };
@@ -87,6 +89,8 @@
 		365942042426C95900211840 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		365B0E3F2430C06D005925B3 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		365B0E432430F785005925B3 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
+		365B0E4524312176005925B3 /* ExploreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreModel.swift; sourceTree = "<group>"; };
+		365B0E47243127C1005925B3 /* ExploreDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreDetailModel.swift; sourceTree = "<group>"; };
 		36824318242CF31700F0B5AD /* NewTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTopicViewController.swift; sourceTree = "<group>"; };
 		3682431A242CFD9B00F0B5AD /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		3682431C242CFEE000F0B5AD /* NewTopicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTopicViewModel.swift; sourceTree = "<group>"; };
@@ -274,6 +278,8 @@
 			children = (
 				368744E6242A63700051535A /* TopicsModel.swift */,
 				368744E8242A64990051535A /* MessageModel.swift */,
+				365B0E4524312176005925B3 /* ExploreModel.swift */,
+				365B0E47243127C1005925B3 /* ExploreDetailModel.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -732,6 +738,7 @@
 				3687A92224262C24003E99F9 /* ErrorSuccessViewController.swift in Sources */,
 				369B9B35242008AB0000B426 /* UIApplication.swift in Sources */,
 				3687A91B24261795003E99F9 /* ResetPasswordCollectionViewCell.swift in Sources */,
+				365B0E48243127C1005925B3 /* ExploreDetailModel.swift in Sources */,
 				36ADC8B6242A7F3B00F4849E /* ForumTableViewCell.swift in Sources */,
 				368744E3242A63100051535A /* FirebaseDatabase.swift in Sources */,
 				369B9B33242008950000B426 /* UIView.swift in Sources */,
@@ -743,6 +750,7 @@
 				365B0E442430F785005925B3 /* LanguageViewController.swift in Sources */,
 				36ADC8BC242A838A00F4849E /* MessageViewModel.swift in Sources */,
 				36824319242CF31700F0B5AD /* NewTopicViewController.swift in Sources */,
+				365B0E4624312176005925B3 /* ExploreModel.swift in Sources */,
 				363A9FE2242E11D6008FA622 /* SettingsViewModel.swift in Sources */,
 				369B9B4F2421502D0000B426 /* SplashViewController.swift in Sources */,
 				369B9AFE241FC0EC0000B426 /* AppDelegate.swift in Sources */,
