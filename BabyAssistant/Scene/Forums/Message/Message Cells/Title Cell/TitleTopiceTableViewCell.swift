@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
- class TitleTopiceTableViewCell: UITableViewCell {
+class TitleTopiceTableViewCell: UITableViewCell {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var askedByLabel: UILabel!
@@ -18,6 +18,7 @@ import Firebase
     override func awakeFromNib() {
         super.awakeFromNib()
         avatarImageView.makeRounded()
+        avatarImageView.contentMode = .scaleAspectFill
         if askedByLabel.text != "Anonymous" {
             if let imageUrl = Auth.auth().currentUser?.photoURL {
                  avatarImageView.kf.setImage(with: imageUrl )

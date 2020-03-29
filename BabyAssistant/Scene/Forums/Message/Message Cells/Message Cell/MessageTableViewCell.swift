@@ -20,6 +20,12 @@ final class MessageTableViewCell: UITableViewCell {
         super.awakeFromNib()
         messageBubble.layer.cornerRadius = messageBubble.frame.size.height / 5
         
+        rightImageView.contentMode = .scaleAspectFill
+        leftImageView.contentMode = .scaleAspectFill
+        rightImageView.makeRounded()
+        leftImageView.makeRounded()
+        
+        
         if let imageUrl = Auth.auth().currentUser?.photoURL {
             rightImageView.kf.setImage(with: imageUrl )
             leftImageView.kf.setImage(with: imageUrl )

@@ -75,6 +75,10 @@ class BaseViewController: UIViewController  {
             button.setImage(UIImage(named: "avatar"), for: .normal) 
         }
         button.cornerRadius = 15
+        button.layer.borderWidth = 2
+        button.layer.masksToBounds = false
+        button.layer.borderColor = UIColor.gray.cgColor
+        button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 30).isActive = true
         button.widthAnchor.constraint(equalToConstant: 30).isActive = true

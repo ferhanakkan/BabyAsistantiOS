@@ -11,6 +11,8 @@ import Firebase
 
 struct SettingsViewModel {
     
+    var firebase = FirebaseUser()
+    
     //MARK: - Setup UI
     internal func setUI(_ owner: SettingViewController) {
         owner.view.backgroundColor = .white
@@ -21,8 +23,13 @@ struct SettingsViewModel {
     internal func setImageView(_ owner: SettingViewController) {
         let myImageView:UIImageView = UIImageView()
         owner.imageView = myImageView
-        owner.imageView!.contentMode = .scaleAspectFit
-        owner.imageView!.makeRounded()
+        owner.imageView!.contentMode = .scaleAspectFill
+        owner.imageView!.layer.cornerRadius = 50
+        owner.imageView!.layer.borderWidth = 2
+        owner.imageView!.layer.masksToBounds = false
+        owner.imageView!.layer.borderColor = UIColor.gray.cgColor
+        owner.imageView!.clipsToBounds = true
+
         
         if let imageUrl = Auth.auth().currentUser?.photoURL {
             owner.imageView!.kf.setImage(with: imageUrl )
@@ -31,13 +38,14 @@ struct SettingsViewModel {
         }
         
         owner.view.addSubview(owner.imageView!)
-        
         owner.imageView!.snp.makeConstraints { (make) in
             make.width.equalTo(100)
             make.height.equalTo(100)
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(AppManager.shared.safeAreaTopInset+70)
         }
+
+       
     }
     
     internal func setTableView(_ owner: SettingViewController) {
@@ -128,7 +136,7 @@ struct SettingsViewModel {
             
             let riversRef = storage.child("\(name).jpg")
             
-            _ = riversRef.putData((image.jpegData(compressionQuality: 0.5))!, metadata: nil) { (metadata, error) in
+            _ = riversRef.putData((image.jpegData(compressionQuality: 0.1))!, metadata: nil) { (metadata, error) in
                 guard let metadata = metadata else {
                     return
                 }
@@ -144,6 +152,65 @@ struct SettingsViewModel {
             }
         }
 
+    }
+    
+    //MARK: - TableView
+    
+    internal func setTableViewRows(indexpath: Int) -> UITableViewCell{
+        let cell = UITableViewCell()
+        switch indexpath {
+        case 0:
+            cell.textLabel?.text = "Change password"
+            cell.accessoryType = .detailButton
+        case 1:
+            cell.textLabel?.text = "Delete User"
+            cell.accessoryType = .detailButton
+        case 2:
+            cell.textLabel?.text = "Edit Language"
+            cell.accessoryType = .disclosureIndicator
+        default:
+            break
+        }
+        return cell
+    }
+    
+    internal func didSelectTableViewRow(indexpath: Int,owner: SettingViewController) {
+        switch indexpath {
+        case 0:
+            let alert = UIAlertController(title: "Do you want to Change Password?", message: "If yes we will send you a mail to change your password.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                if let email = Auth.auth().currentUser?.email {
+                    Auth.auth().sendPasswordReset(withEmail: email) { error in
+                        AppManager.shared.messagePresent(title: "Success", message: "We send you a mail chech you mail box", type: .success)
+                        self.firebase.signOut()
+                    }
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+            }))
+            owner.present(alert, animated: true)
+        case 1:
+            let alert = UIAlertController(title: "Do you want to Delete your account?", message: "if you delete your account you can register with same mail again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                let user = Auth.auth().currentUser
+                user?.delete { error in
+                  if let error = error {
+                    AppManager.shared.messagePresent(title: "Error", message: error.localizedDescription, type: .error)
+                  } else {
+                    AppManager.shared.messagePresent(title: "Success", message: "Your account has been deleted", type: .success)
+                    self.firebase.signOut()
+                  }
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+            }))
+            owner.present(alert, animated: true)
+        case 2:
+            let vc = LanguageViewController()
+            owner.navigationController?.show(vc, sender: nil)
+        default:
+            break
+        }
     }
     
 }

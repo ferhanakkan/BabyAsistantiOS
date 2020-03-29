@@ -69,8 +69,10 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = .backgroundGreen
             let cellImg: UIImageView!
             cellImg = UIImageView(frame: CGRect(x: 15, y: 10, width: 80, height: 80))
+            cellImg.layer.borderWidth = 2
+            cellImg.layer.borderColor = UIColor.gray.cgColor
+            cellImg.clipsToBounds = true
             cellImg.layer.cornerRadius = 40
-            cellImg.layer.masksToBounds=true
             cellImg.contentMode = .scaleAspectFill
             cellImg.layer.masksToBounds=true
             DispatchQueue.main.async {
