@@ -73,10 +73,17 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
             cellImg.layer.masksToBounds=true
             cellImg.contentMode = .scaleAspectFill
             cellImg.layer.masksToBounds=true
-//            cellImg.kf.setImage(with: Auth.auth().currentUser?.photoURL )
-            cellImg.image = UIImage(named: "avatar")
+            DispatchQueue.main.async {
+                if let imageUrl = Auth.auth().currentUser?.photoURL {
+                    cellImg.kf.setImage(with: imageUrl )
+                } else {
+                    cellImg.image = UIImage(named: "avatar")
+                }
+            }
+
+
             cell.addSubview(cellImg)
-            
+
             let cellLbl = UILabel(frame: CGRect(x: 110, y: cell.frame.height/2-15, width: 250, height: 30))
             cell.addSubview(cellLbl)
             cellLbl.text = titleArr[indexPath.row]

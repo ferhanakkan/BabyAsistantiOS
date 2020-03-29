@@ -29,6 +29,7 @@ final class SplashViewController: UIViewController , CollectionViewIndexPicker {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
+            self.view.backgroundColor = .white
             self.splashViewModel.setGreenView(owner: self)
             self.splashViewModel.setImage(self)
             self.splashViewModel.setCollectionView(owner: self)

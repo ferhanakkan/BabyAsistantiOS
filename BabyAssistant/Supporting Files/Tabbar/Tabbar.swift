@@ -8,18 +8,20 @@
 
 
 import UIKit
+import Firebase
 
 class Tabbar {
     class func createTabBarWithNavigationBar(owner: Any) -> UITabBarController {
+        
         let tabController = UITabBarController()
         tabController.hidesBottomBarWhenPushed = true
 
         //Storyboard usage
         let explore = ExploreViewController()
         
-        let profilePage = UIStoryboard.forum.instantiateViewController(withIdentifier: "ForumTopic") as! ForumTopicViewController
+        let profilePage = ForumTopicViewController()
         
-        let forum = UIStoryboard.forum.instantiateViewController(withIdentifier: "ForumTopic") as! ForumTopicViewController
+        let forum = ForumTopicViewController()
         
         
         explore.title = "Explore"

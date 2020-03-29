@@ -19,6 +19,7 @@ final class MessageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         messageViewModel.setTableView(self)
         messageViewModel.getMessage(owner: self)
         messageViewModel.setSenderView(owner: self)
@@ -55,6 +56,7 @@ extension MessageViewController: UITableViewDataSource , UITableViewDelegate {
                 cell.leftImageView.isHidden = true
                 cell.backgroundColor = .backgroundGreen
                 cell.messageBubble.backgroundColor = .gray
+                
             } else {
                 cell.rightImageView.isHidden = true
                 cell.backgroundColor = .gray

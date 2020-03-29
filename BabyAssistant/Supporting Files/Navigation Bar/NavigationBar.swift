@@ -12,17 +12,7 @@ import Firebase
 class NavigationBar {
     
     class func createNavigatonController(owner: Any) -> UINavigationController{
-//        let currentUser = Auth.auth().currentUser
-//        if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
-//            if currentUser != nil && rememberMe {
-////                return Tabbar.createTabBarWithNavigationBar(owner: owner)
-//                return NavigationBar.navigationBarSplash()
-//            } else {
-//                return  NavigationBar.navigationBarSplash()
-//            }
-//        } else {
             return NavigationBar.navigationBarSplash()
-        
     }
 
     class func navigationBarSplash() -> UINavigationController {
@@ -34,8 +24,7 @@ class NavigationBar {
         navigationController.navigationBar.barStyle = .black
         
         
-        let appStartPoint = UIStoryboard.auth.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
-//        let appStartPoint = NewTopicViewController()
+        let appStartPoint = SplashViewController()
         
         navigationController.setViewControllers([appStartPoint], animated: true)
         return navigationController

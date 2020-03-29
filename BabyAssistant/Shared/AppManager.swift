@@ -12,6 +12,7 @@ struct AppManager {
     static var shared = AppManager()
     
     var selectedForumTopic:String?
+    var profileImageUrl:URL?
     
     let reachability: Reachability = try! Reachability(hostname: "google.com")
 

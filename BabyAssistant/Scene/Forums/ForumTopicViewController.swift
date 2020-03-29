@@ -48,11 +48,11 @@ extension ForumTopicViewController: UITableViewDataSource , UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let vc = UIStoryboard.forum.instantiateViewController(withIdentifier: "MessageViewController") as? MessageViewController {
-            AppManager.shared.selectedForumTopic = forumTopicViewModel.topicsModel[indexPath.row].title
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.show(vc, sender: nil)
-        }
+        let vc = MessageViewController()
+        AppManager.shared.selectedForumTopic = forumTopicViewModel.topicsModel[indexPath.row].title
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.show(vc, sender: nil)
+        
     }
     
     @objc private func newTitleButtonPressed() {
