@@ -19,15 +19,15 @@ class TitleTopiceTableViewCell: UITableViewCell {
         super.awakeFromNib()
         avatarImageView.makeRounded()
         avatarImageView.contentMode = .scaleAspectFill
-        if askedByLabel.text != "Anonymous" {
-            DispatchQueue.main.async {
-                if let data = UserDefaults.standard.value(forKey: "profileImage") as? Data{
-                    self.avatarImageView.image = UIImage(data: data)
-                } else {
-                    self.avatarImageView.image = UIImage(named: "avatar")
-                }
-            }
-        }
+//        if askedByLabel.text != "Anonymous" {
+//            DispatchQueue.main.async {
+//                if let data = UserDefaults.standard.value(forKey: "profileImage") as? Data{
+//                    self.avatarImageView.image = UIImage(data: data)
+//                } else {
+//                    self.avatarImageView.image = UIImage(named: "avatar")
+//                }
+//            }
+//        }
     }
     
 }

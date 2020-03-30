@@ -17,6 +17,19 @@ final class FirebaseDatabase {
     lazy var exploreDetailArray: [ExploreDetailModel] = []
     lazy var dailyPlanArray: [DailyPlanModel] = []
     
+    internal func getOtherUsersImage(username: String, completion: @escaping(Data) -> Void) {
+        let storage = Storage.storage().reference(withPath: "profileImage/\(username).jpg")
+
+        storage.getData(maxSize: 1 * 1024 * 1024) { data, error in
+          if let error = error {
+            print(error.localizedDescription)
+            print("error")
+          } else {
+            completion(data!)
+          }
+        }
+    }
+    
     internal func getTopics(completion: @escaping([TopicsModel]) -> Void) {
         let fireStoreDatabase = Firestore.firestore()
         fireStoreDatabase.collection("Topics").addSnapshotListener { (snapshot, error) in

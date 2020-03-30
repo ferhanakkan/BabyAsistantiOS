@@ -46,6 +46,11 @@ extension MessageViewController: UITableViewDataSource , UITableViewDelegate {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTopiceTableViewCell", for: indexPath) as! TitleTopiceTableViewCell
+            messageViewModel.getUserImage(username: messageViewModel.messageModel[indexPath.section].username) { (data) in
+                DispatchQueue.main.async {
+                    cell.avatarImageView.image = UIImage(data: data)
+                }
+            }
             cell.askedByLabel.text = messageViewModel.messageModel[indexPath.section].username
             cell.questionLabel.text = messageViewModel.messageModel[indexPath.section].title
             return cell
@@ -60,6 +65,11 @@ extension MessageViewController: UITableViewDataSource , UITableViewDelegate {
                 cell.messageBubble.backgroundColor = .gray
                 
             } else {
+                messageViewModel.getUserImage(username: messageViewModel.messageModel[indexPath.section].username) { (data) in
+                    DispatchQueue.main.async {
+                        cell.leftImageView.image = UIImage(data: data)
+                    }
+                }
                 cell.leftImageView.layer.borderColor = UIColor.backgroundGreen.cgColor
                 cell.rightImageView.isHidden = true
                 cell.leftImageView.isHidden = false

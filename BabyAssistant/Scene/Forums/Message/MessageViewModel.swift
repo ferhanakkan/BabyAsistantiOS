@@ -49,7 +49,7 @@ class MessageViewModel {
         
         owner.sendButton = UIButton()
         view.addSubview(owner.sendButton!)
-        owner.sendButton?.setImage(UIImage(named: "eye"), for: .normal)
+        owner.sendButton?.setImage(UIImage(named: "plane"), for: .normal)
         owner.sendButton!.isUserInteractionEnabled = true
         
         owner.sendButton?.snp.makeConstraints({ (make) in
@@ -84,6 +84,12 @@ class MessageViewModel {
             DispatchQueue.main.async {
                 owner.messageTextfield?.text = ""
             }
+        }
+    }
+    
+    internal func getUserImage(username: String,completion: @escaping(Data) -> Void) {
+        firebaseDatabase.getOtherUsersImage(username: username) { (data) in
+            completion(data)
         }
     }
 
