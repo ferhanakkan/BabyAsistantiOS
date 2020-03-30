@@ -20,11 +20,13 @@ class TitleTopiceTableViewCell: UITableViewCell {
         avatarImageView.makeRounded()
         avatarImageView.contentMode = .scaleAspectFill
         if askedByLabel.text != "Anonymous" {
-            if let imageUrl = Auth.auth().currentUser?.photoURL {
-                 avatarImageView.kf.setImage(with: imageUrl )
-             } else {
-                avatarImageView.image = UIImage(named: "avatar")
-             }
+            DispatchQueue.main.async {
+                if let data = UserDefaults.standard.value(forKey: "profileImage") as? Data{
+                    self.avatarImageView.image = UIImage(data: data)
+                } else {
+                    self.avatarImageView.image = UIImage(named: "avatar")
+                }
+            }
         }
     }
     

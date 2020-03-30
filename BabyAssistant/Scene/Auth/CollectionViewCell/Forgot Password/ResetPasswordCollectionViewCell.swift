@@ -29,12 +29,5 @@ class ResetPasswordCollectionViewCell: UICollectionViewCell {
     @IBAction func logInPressed(_ sender: UIButton) {
         delegate?.selectedCollectionViewRoad(row: 1)
     }
-    
-//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-////         self.preferredMaxLayoutWidth = layoutAttributes.size.width - contentView.layoutMargins.left - contentView.layoutMargins.left
-//         layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-//         return layoutAttributes
-//     }
-    
 }
 

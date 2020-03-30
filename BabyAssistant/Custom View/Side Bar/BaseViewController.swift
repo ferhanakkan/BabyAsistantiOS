@@ -29,10 +29,9 @@ class BaseViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = .gray
         navigationController?.navigationBar.barTintColor = .backgroundGreen
-        DispatchQueue.main.async {
-            self.imageSetter()
-        }
+        imageSetter()
         sidebarView=SidebarView(frame: CGRect(x: 0, y: 0, width: 0, height: self.view.frame.height))
         sidebarView.delegate=self
         sidebarView.layer.zPosition=100
@@ -71,11 +70,17 @@ class BaseViewController: UIViewController  {
     private func imageSetter() {
         let navigationBarRightButton = UIBarButtonItem()
         let button = UIButton()
-        if let imageUrl = Auth.auth().currentUser?.photoURL {
-            button.kf.setImage(with: imageUrl, for: .normal)
-        } else {
-            button.setImage(UIImage(named: "avatar"), for: .normal) 
+        
+        DispatchQueue.main.async {
+            if let data = UserDefaults.standard.value(forKey: "profileImage") as? Data{
+                button.setImage(UIImage(data: data), for: .normal)
+            }
+            else {
+                button.setImage(UIImage(named: "avatar"), for: .normal)
+            }
         }
+
+        
         button.cornerRadius = 15
         button.layer.borderWidth = 2
         button.layer.masksToBounds = false

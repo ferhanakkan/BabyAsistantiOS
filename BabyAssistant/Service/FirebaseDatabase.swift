@@ -15,6 +15,7 @@ final class FirebaseDatabase {
     lazy var messageArray: [MessageModel] = []
     lazy var exploreArray: [ExploreModel] = []
     lazy var exploreDetailArray: [ExploreDetailModel] = []
+    lazy var dailyPlanArray: [DailyPlanModel] = []
     
     internal func getTopics(completion: @escaping([TopicsModel]) -> Void) {
         let fireStoreDatabase = Firestore.firestore()
@@ -89,19 +90,19 @@ final class FirebaseDatabase {
         } else {
             username = "Anonymous"
         }
-         let docData: [String: Any] = [
-             "Username": username,
-             "Title": title,
-             "Subtitle": subtitle,
-             "Time": Date().timeIntervalSince1970
-         ]
-         fireStoreDatabase.collection("TopicDatas").document(title).collection("Message").addDocument(data: docData) { err in
-             if let err = err {
-                 AppManager.shared.messagePresent(title: "OOPS", message: err as! String , type: .error)
-             } else {
-                 print("Document successfully written!")
-             }
-         }
+        let docData: [String: Any] = [
+            "Username": username,
+            "Title": title,
+            "Subtitle": subtitle,
+            "Time": Date().timeIntervalSince1970
+        ]
+        fireStoreDatabase.collection("TopicDatas").document(title).collection("Message").addDocument(data: docData) { err in
+            if let err = err {
+                AppManager.shared.messagePresent(title: "OOPS", message: err as! String , type: .error)
+            } else {
+                print("Document successfully written!")
+            }
+        }
         fireStoreDatabase.collection("Topics").document(title).setData(docData) { err in
             if let err = err {
                 AppManager.shared.messagePresent(title: "OOPS", message: err as! String , type: .error)
@@ -111,7 +112,7 @@ final class FirebaseDatabase {
                 }
             }
         }
-
+        
     }
     
     internal func getExploreTopics(completion: @escaping([ExploreModel]) -> Void) {
@@ -129,19 +130,19 @@ final class FirebaseDatabase {
                             let storage = Storage.storage()
                             let gsReference = storage.reference(forURL:imageUrl)
                             
-    
+                            
                             gsReference.downloadURL { url, error in
-                              if let error = error {
-                                print(error)
-                              } else {
-                                let data = ExploreModel(title: title, subtitle: subTitle, image: url!)
-                                self.exploreArray.append(data)
-                                print("count explorearray \(self.exploreArray.count)")
-                                if index == snapshot!.documents.count-1 {
-                                    completion(self.exploreArray)
+                                if let error = error {
+                                    print(error)
+                                } else {
+                                    let data = ExploreModel(title: title, subtitle: subTitle, image: url!)
+                                    self.exploreArray.append(data)
+                                    print("count explorearray \(self.exploreArray.count)")
+                                    if index == snapshot!.documents.count-1 {
+                                        completion(self.exploreArray)
+                                    }
+                                    index += 1
                                 }
-                                index += 1
-                              }
                             }
                         }
                     }
@@ -151,38 +152,74 @@ final class FirebaseDatabase {
     }
     
     internal func getExploreDetails(title:String, completion: @escaping([ExploreDetailModel]) -> Void) {
-    let fireStoreDatabase = Firestore.firestore()
+        let fireStoreDatabase = Firestore.firestore()
         fireStoreDatabase.collection("ExploreTopics").document(title).collection("Detail").order(by: "Time").addSnapshotListener { (snapshot, error) in
-        if error != nil {
-            print(error!)
-        } else {
-            if snapshot?.isEmpty != true && snapshot != nil {
-                self.exploreArray.removeAll()
-                var index = 0
-                for document in snapshot!.documents {
-                    if let title = document.get("Title") as? String, let imageUrl = document.get("imageUrl") as? String {
-                        let storage = Storage.storage()
-                        let gsReference = storage.reference(forURL:imageUrl)
-                        
-
-                        gsReference.downloadURL { url, error in
-                          if let error = error {
-                            print(error)
-                          } else {
-                            let data = ExploreDetailModel(title: title,imageUrl: url!)
-                            self.exploreDetailArray.append(data)
-                            if index == snapshot!.documents.count-1 {
-                                completion(self.exploreDetailArray)
+            if error != nil {
+                print(error!)
+            } else {
+                if snapshot?.isEmpty != true && snapshot != nil {
+                    self.exploreArray.removeAll()
+                    var index = 0
+                    for document in snapshot!.documents {
+                        if let title = document.get("Title") as? String, let imageUrl = document.get("imageUrl") as? String {
+                            let storage = Storage.storage()
+                            let gsReference = storage.reference(forURL:imageUrl)
+                            
+                            
+                            gsReference.downloadURL { url, error in
+                                if let error = error {
+                                    print(error)
+                                } else {
+                                    let data = ExploreDetailModel(title: title,imageUrl: url!)
+                                    self.exploreDetailArray.append(data)
+                                    if index == snapshot!.documents.count-1 {
+                                        completion(self.exploreDetailArray)
+                                    }
+                                    index += 1
+                                }
                             }
-                            index += 1
-                          }
                         }
                     }
                 }
             }
         }
     }
-}
-
- 
+    
+    internal func getDailyPlanDetails(completion: @escaping([DailyPlanModel]) -> Void) {
+        let fireStoreDatabase = Firestore.firestore()
+        fireStoreDatabase.collection("DailyPlan").order(by: "Time").addSnapshotListener { (snapshot, error) in
+            if error != nil {
+                print(error!)
+            } else {
+                if snapshot?.isEmpty != true && snapshot != nil {
+                    self.dailyPlanArray.removeAll()
+                    var index = 0
+                    for document in snapshot!.documents {
+                        if let title = document.get("Title") as? String, let subtitle = document.get("Subtitle") as? String, let imageUrl = document.get("imageUrl") as? String, let date = document.get("Time") as? Timestamp {
+                            let storage = Storage.storage()
+                            let gsReference = storage.reference(forURL:imageUrl)
+    
+                            let convertTime = Date(timeIntervalSince1970: Double(date.seconds))
+                            print(convertTime)
+                            
+                            
+                            gsReference.downloadURL { url, error in
+                                if let error = error {
+                                    print(error)
+                                } else {
+                                    let data = DailyPlanModel(Time: convertTime, Title: title, Subtitle: subtitle, imageUrl: url!)
+                                    self.dailyPlanArray.append(data)
+                                    if index == snapshot!.documents.count-1 {
+                                        completion(self.dailyPlanArray)
+                                    }
+                                    index += 1
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }

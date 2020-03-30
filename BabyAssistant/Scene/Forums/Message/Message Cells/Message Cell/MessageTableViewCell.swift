@@ -26,13 +26,15 @@ final class MessageTableViewCell: UITableViewCell {
         leftImageView.makeRounded()
         
         
-        if let imageUrl = Auth.auth().currentUser?.photoURL {
-            rightImageView.kf.setImage(with: imageUrl )
-            leftImageView.kf.setImage(with: imageUrl )
-        } else {
-            rightImageView.image = UIImage(named: "avatar")
-            leftImageView.image = UIImage(named: "avatar")
+        DispatchQueue.main.async {
+            if let data = UserDefaults.standard.value(forKey: "profileImage") as? Data{
+                self.rightImageView.image = UIImage(data: data)
+            } else {
+                self.rightImageView.image = UIImage(named: "avatar")
+            }
         }
+        
+        //Must set left image ?????????
     }
 
         override func setSelected(_ selected: Bool, animated: Bool) {

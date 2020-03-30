@@ -16,6 +16,7 @@ final class ForumTopicViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         DispatchQueue.main.async {
             self.forumTopicViewModel.setTableView(self)
             self.forumTopicViewModel.getTopics(owner: self)

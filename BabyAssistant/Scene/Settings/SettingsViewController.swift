@@ -52,6 +52,10 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        
+        if let data:Data = image?.pngData() {
+            UserDefaults.standard.setValue(data, forKey: "profileImage")
+        }
         imageView?.image = image
         settingsViewModel.sendSelectedImage(image: image!)
     }

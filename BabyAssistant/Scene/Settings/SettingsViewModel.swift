@@ -31,10 +31,12 @@ struct SettingsViewModel {
         owner.imageView!.clipsToBounds = true
 
         
-        if let imageUrl = Auth.auth().currentUser?.photoURL {
-            owner.imageView!.kf.setImage(with: imageUrl )
-        } else {
-            owner.imageView!.image = UIImage(named: "avatar")
+        DispatchQueue.main.async {
+            if let data = UserDefaults.standard.value(forKey: "profileImage") as? Data{
+                owner.imageView?.image = UIImage(data: data)
+            } else {
+                owner.imageView!.image = UIImage(named: "avatar")
+            }
         }
         
         owner.view.addSubview(owner.imageView!)
@@ -60,14 +62,10 @@ struct SettingsViewModel {
         
         owner.tableView!.dataSource = owner
         owner.tableView!.delegate = owner
+        owner.tableView?.isScrollEnabled = false
         
         owner.tableView!.backgroundColor = .white
         owner.tableView!.separatorColor = .clear
-        
-//        owner.tableView!.register(UINib(nibName: "TitleTopiceTableViewCell", bundle: nil), forCellReuseIdentifier: "TitleTopiceTableViewCell")
-//        owner.tableView!.register(UINib(nibName: "MessageTableViewCell", bundle: nil), forCellReuseIdentifier: "MessageTableViewCell")
-
-
     }
     
     
@@ -134,15 +132,10 @@ struct SettingsViewModel {
         let storage = Storage.storage().reference(withPath: "profileImage")
         if let name = Auth.auth().currentUser?.displayName {
             
-            let riversRef = storage.child("\(name).jpg")
+            let store = storage.child("\(name).jpg")
             
-            _ = riversRef.putData((image.jpegData(compressionQuality: 0.1))!, metadata: nil) { (metadata, error) in
-                guard let metadata = metadata else {
-                    return
-                }
-                _ = metadata.size
-                // You can also access to download URL after upload.
-                riversRef.downloadURL { (url, error) in
+            store.putData((image.jpegData(compressionQuality: 0.1))!, metadata: nil) { (metadata, error) in
+                store.downloadURL { (url, error) in
                     guard let downloadURL = url else {return}
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.photoURL = downloadURL

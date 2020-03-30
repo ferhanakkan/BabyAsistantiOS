@@ -41,7 +41,6 @@ final class ExploreViewModel {
         
         owner.collectionView = collectionView
         owner.view.addSubview(owner.collectionView!)
-        owner.collectionView?.backgroundColor = .red
         
         owner.collectionView!.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()

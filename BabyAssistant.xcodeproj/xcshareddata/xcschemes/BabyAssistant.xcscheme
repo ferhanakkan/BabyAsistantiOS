@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "369B9AF9241FC0EC0000B426"
-               BuildableName = "BabyAssistant.app"
+               BuildableName = "Baby Assistant.app"
                BlueprintName = "BabyAssistant"
                ReferencedContainer = "container:BabyAssistant.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "369B9AF9241FC0EC0000B426"
-            BuildableName = "BabyAssistant.app"
+            BuildableName = "Baby Assistant.app"
             BlueprintName = "BabyAssistant"
             ReferencedContainer = "container:BabyAssistant.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "369B9AF9241FC0EC0000B426"
-            BuildableName = "BabyAssistant.app"
+            BuildableName = "Baby Assistant.app"
             BlueprintName = "BabyAssistant"
             ReferencedContainer = "container:BabyAssistant.xcodeproj">
          </BuildableReference>

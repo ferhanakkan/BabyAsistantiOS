@@ -78,13 +78,12 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
             cellImg.contentMode = .scaleAspectFill
             cellImg.layer.masksToBounds=true
             DispatchQueue.main.async {
-                if let imageUrl = Auth.auth().currentUser?.photoURL {
-                    cellImg.kf.setImage(with: imageUrl )
+               if let data = UserDefaults.standard.value(forKey: "profileImage") as? Data{
+                cellImg.image = UIImage(data: data)
                 } else {
                     cellImg.image = UIImage(named: "avatar")
                 }
             }
-
 
             cell.addSubview(cellImg)
 
