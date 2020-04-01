@@ -1,6 +1,14 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'No'
+     end
+  end
+end
+
 target 'BabyAssistant' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -25,9 +33,15 @@ target 'BabyAssistant' do
     pod 'Firebase/Core'
     pod 'Firebase/Firestore'
     pod 'Firebase/Storage'
+    pod 'Firebase/Messaging'
     pod 'Fabric', '~> 1.10.2'
     pod 'Firebase/Crashlytics'
     pod 'BEMCheckBox'
+    pod 'OneSignal', '>= 2.11.2', '< 3.0'
+    
+   target 'OneSignalNotificationServiceExtension' do
+     pod 'OneSignal', '>= 2.11.2', '< 3.0'
+   end
   
 
   # Pods for BabyAssistant

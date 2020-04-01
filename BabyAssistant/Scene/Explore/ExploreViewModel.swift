@@ -32,8 +32,8 @@ final class ExploreViewModel {
         let collectionView: UICollectionView = {
                 let layout = UICollectionViewFlowLayout()
 //                layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-                layout.scrollDirection = .vertical
-            layout.itemSize = CGSize(width: owner.view.frame.width*0.9, height: 200) // make it self size !!!!
+            layout.scrollDirection = .vertical
+            layout.itemSize = CGSize(width: owner.view.frame.width*0.9, height: owner.view.frame.width*0.9*5/8) 
                 let collectionview = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0 ), collectionViewLayout: layout)
                 collectionview.backgroundColor = .clear
                 return collectionview

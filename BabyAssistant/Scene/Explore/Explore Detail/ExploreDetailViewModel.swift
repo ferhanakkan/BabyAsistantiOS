@@ -32,15 +32,16 @@ final class ExploreDetailViewModel {
                 let layout = UICollectionViewFlowLayout()
 //                layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
                 layout.scrollDirection = .vertical
-            layout.itemSize = CGSize(width: owner.view.frame.width, height: 200) // make it self size !!!!
+            layout.itemSize = CGSize(width: owner.view.frame.width, height: owner.view.frame.width*0.9*5/8)
                 let collectionview = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0 ), collectionViewLayout: layout)
                 collectionview.backgroundColor = .clear
                 return collectionview
             }()
         
         owner.collectionView = collectionView
+//        owner.collectionView?.isScrollEnabled = true
         owner.view.addSubview(owner.collectionView!)
-        owner.collectionView?.isUserInteractionEnabled = false
+        owner.collectionView?.isUserInteractionEnabled = true
         
         owner.collectionView!.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()

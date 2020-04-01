@@ -53,16 +53,14 @@ struct FirebaseUser {
     }
     
     internal func signOut() {
-        guard let delegate = UIApplication.shared.delegate else { return }
-        guard let window = (delegate as! AppDelegate).window else { return }
         UserDefaults.standard.setValue(nil, forKey: "profileImage")
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            window.rootViewController = NavigationBar.createNavigatonController(owner: delegate)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
+         UIApplication.getPresentedViewController()?.view.window?.rootViewController = NavigationBar.createNavigatonController(owner: UIApplication.getPresentedViewController()!)
     }
     
 }

@@ -38,7 +38,7 @@ final class ExploreDetailTitleCollectionViewCell: UICollectionViewCell {
         
         image.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(150)
+            make.height.equalTo(contentView.snp.height)
         }
         
         title.snp.makeConstraints { (make) in

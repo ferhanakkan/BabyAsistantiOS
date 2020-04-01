@@ -18,6 +18,7 @@ ${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework
 ${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework
 ${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
 ${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework
+${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework
 ${BUILT_PRODUCTS_DIR}/QKMRZParser/QKMRZParser.framework
 ${BUILT_PRODUCTS_DIR}/QKMRZScanner/QKMRZScanner.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework

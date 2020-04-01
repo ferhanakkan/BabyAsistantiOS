@@ -10,6 +10,7 @@ import UIKit
 import Localize
 import IQKeyboardManagerSwift
 import Firebase
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,10 +25,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setKeyboard()
         FirebaseApp.configure()
 
+        
+        //START OneSignal initialization code
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+        OneSignal.initWithLaunchOptions(launchOptions,
+        appId: "f94ca3cb-ce7f-4ca8-96c3-e08a4fee5549",
+        handleNotificationAction: nil,
+        settings: onesignalInitSettings)
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+        print("User accepted notifications: \(accepted)")
+        })
+        //END OneSignal initializataion code
+
         window = UIWindow(frame: UIScreen.main.bounds)
         selectRoot()
         window?.makeKeyAndVisible()
-        
         return true
     }
     
@@ -51,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     
-    func setLanguage() {
+    private func setLanguage() {
         //Localize
         Localize.shared.update(provider: .json)
         Localize.shared.update(fileName: "lang")
@@ -78,7 +91,7 @@ extension AppDelegate {
     
     //MARK: Set Keyboard
     
-    func setKeyboard() {
+   private func setKeyboard() {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
@@ -97,5 +110,6 @@ extension AppDelegate {
             window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
         }
     }
+    
 }
 

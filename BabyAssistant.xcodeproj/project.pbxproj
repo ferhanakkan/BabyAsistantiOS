@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3605867324351AA200609BC4 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3605867224351AA200609BC4 /* NotificationService.swift */; };
+		3605867724351AA200609BC4 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3605867024351AA200609BC4 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		363A9FE0242E11C7008FA622 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A9FDF242E11C7008FA622 /* SettingsViewController.swift */; };
 		363A9FE2242E11D6008FA622 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A9FE1242E11D6008FA622 /* SettingsViewModel.swift */; };
 		363A9FE5242E1242008FA622 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A9FE4242E1242008FA622 /* ExploreViewController.swift */; };
@@ -76,11 +78,41 @@
 		36F561542427C8DD004943CC /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F561532427C8DD004943CC /* SideBar.swift */; };
 		36F561562427CBF4004943CC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F561552427CBF3004943CC /* BaseViewController.swift */; };
 		72A9994A42A6ADF1BCA8E1FD /* Pods_BabyAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DFF76700F3360322DC5D42 /* Pods_BabyAssistant.framework */; };
+		DB41006251D13B0A578658CD /* Pods_BabyAssistant_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE94067F1FC3E414580D07E2 /* Pods_BabyAssistant_OneSignalNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3605867524351AA200609BC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 369B9AF2241FC0EC0000B426 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3605866F24351AA200609BC4;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3605867C24351AA200609BC4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3605867724351AA200609BC4 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E712C5CF1E0CC271A0B1AD4 /* Pods-BabyAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyAssistant.release.xcconfig"; path = "Target Support Files/Pods-BabyAssistant/Pods-BabyAssistant.release.xcconfig"; sourceTree = "<group>"; };
+		2463ED2AAE91C3A453A8F973 /* Pods-BabyAssistant-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyAssistant-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-BabyAssistant-OneSignalNotificationServiceExtension/Pods-BabyAssistant-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		3485CFB9A944D54237B4A305 /* Pods-BabyAssistant.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyAssistant.test.xcconfig"; path = "Target Support Files/Pods-BabyAssistant/Pods-BabyAssistant.test.xcconfig"; sourceTree = "<group>"; };
+		3605866B24350EC300609BC4 /* Baby Assistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Baby Assistant.entitlements"; sourceTree = "<group>"; };
+		3605867024351AA200609BC4 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3605867224351AA200609BC4 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		3605867424351AA200609BC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		363A9FDF242E11C7008FA622 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		363A9FE1242E11D6008FA622 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		363A9FE4242E1242008FA622 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -153,11 +185,22 @@
 		36ADC8BB242A838A00F4849E /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		36F561532427C8DD004943CC /* SideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
 		36F561552427CBF3004943CC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = "BabyAssistant/Custom View/Side Bar/BaseViewController.swift"; sourceTree = SOURCE_ROOT; };
+		66584C894731F75219592161 /* Pods-BabyAssistant-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyAssistant-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-BabyAssistant-OneSignalNotificationServiceExtension/Pods-BabyAssistant-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		B6878BBD798FFAC37FAA2B76 /* Pods-BabyAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyAssistant.debug.xcconfig"; path = "Target Support Files/Pods-BabyAssistant/Pods-BabyAssistant.debug.xcconfig"; sourceTree = "<group>"; };
+		EC6F5E45BF100F705440D9FE /* Pods-BabyAssistant-OneSignalNotificationServiceExtension.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabyAssistant-OneSignalNotificationServiceExtension.test.xcconfig"; path = "Target Support Files/Pods-BabyAssistant-OneSignalNotificationServiceExtension/Pods-BabyAssistant-OneSignalNotificationServiceExtension.test.xcconfig"; sourceTree = "<group>"; };
 		F8DFF76700F3360322DC5D42 /* Pods_BabyAssistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BabyAssistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE94067F1FC3E414580D07E2 /* Pods_BabyAssistant_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BabyAssistant_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3605866D24351AA200609BC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB41006251D13B0A578658CD /* Pods_BabyAssistant_OneSignalNotificationServiceExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		369B9AF7241FC0EC0000B426 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -169,6 +212,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3605867124351AA200609BC4 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				3605867224351AA200609BC4 /* NotificationService.swift */,
+				3605867424351AA200609BC4 /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		363A9FDE242E11B0008FA622 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				369B9AFC241FC0EC0000B426 /* BabyAssistant */,
+				3605867124351AA200609BC4 /* OneSignalNotificationServiceExtension */,
 				369B9AFB241FC0EC0000B426 /* Products */,
 				C7E370A16D4B35ABE8819177 /* Pods */,
 				5B3C4F428E270C9688FB6BD2 /* Frameworks */,
@@ -398,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				369B9AFA241FC0EC0000B426 /* Baby Assistant.app */,
+				3605867024351AA200609BC4 /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -405,6 +459,7 @@
 		369B9AFC241FC0EC0000B426 /* BabyAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				3605866B24350EC300609BC4 /* Baby Assistant.entitlements */,
 				368744E4242A634E0051535A /* Model */,
 				365942032426C93000211840 /* Service */,
 				369B9B4724200A4D0000B426 /* Core */,
@@ -605,6 +660,7 @@
 			isa = PBXGroup;
 			children = (
 				F8DFF76700F3360322DC5D42 /* Pods_BabyAssistant.framework */,
+				FE94067F1FC3E414580D07E2 /* Pods_BabyAssistant_OneSignalNotificationServiceExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -615,6 +671,9 @@
 				B6878BBD798FFAC37FAA2B76 /* Pods-BabyAssistant.debug.xcconfig */,
 				3485CFB9A944D54237B4A305 /* Pods-BabyAssistant.test.xcconfig */,
 				0E712C5CF1E0CC271A0B1AD4 /* Pods-BabyAssistant.release.xcconfig */,
+				2463ED2AAE91C3A453A8F973 /* Pods-BabyAssistant-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				EC6F5E45BF100F705440D9FE /* Pods-BabyAssistant-OneSignalNotificationServiceExtension.test.xcconfig */,
+				66584C894731F75219592161 /* Pods-BabyAssistant-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -622,6 +681,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3605866F24351AA200609BC4 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3605867824351AA200609BC4 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				37E2300CCB92C0BE2775CD4C /* [CP] Check Pods Manifest.lock */,
+				3605866C24351AA200609BC4 /* Sources */,
+				3605866D24351AA200609BC4 /* Frameworks */,
+				3605866E24351AA200609BC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 3605867024351AA200609BC4 /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		369B9AF9241FC0EC0000B426 /* BabyAssistant */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 369B9B0E241FC0EF0000B426 /* Build configuration list for PBXNativeTarget "BabyAssistant" */;
@@ -632,10 +709,12 @@
 				369B9AF8241FC0EC0000B426 /* Resources */,
 				8619620BD019A477ED3869EA /* [CP] Embed Pods Frameworks */,
 				3616D31A24221C5F00B2FD10 /* ShellScript */,
+				3605867C24351AA200609BC4 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3605867624351AA200609BC4 /* PBXTargetDependency */,
 			);
 			name = BabyAssistant;
 			productName = BabyAssistant;
@@ -648,10 +727,13 @@
 		369B9AF2241FC0EC0000B426 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Ferhan Akkan";
 				TargetAttributes = {
+					3605866F24351AA200609BC4 = {
+						CreatedOnToolsVersion = 11.4;
+					};
 					369B9AF9241FC0EC0000B426 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -671,11 +753,19 @@
 			projectRoot = "";
 			targets = (
 				369B9AF9241FC0EC0000B426 /* BabyAssistant */,
+				3605866F24351AA200609BC4 /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3605866E24351AA200609BC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		369B9AF8241FC0EC0000B426 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -715,6 +805,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
+		};
+		37E2300CCB92C0BE2775CD4C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BabyAssistant-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		4B070B57535FB65160881F8F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -758,6 +870,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3605866C24351AA200609BC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3605867324351AA200609BC4 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		369B9AF6241FC0EC0000B426 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -822,6 +942,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3605867624351AA200609BC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3605866F24351AA200609BC4 /* OneSignalNotificationServiceExtension */;
+			targetProxy = 3605867524351AA200609BC4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		369B9B08241FC0EF0000B426 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -834,6 +962,72 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3605867924351AA200609BC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2463ED2AAE91C3A453A8F973 /* Pods-BabyAssistant-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 43THU6L26P;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ferhanakkan.BabyAssitant.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3605867A24351AA200609BC4 /* Test */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC6F5E45BF100F705440D9FE /* Pods-BabyAssistant-OneSignalNotificationServiceExtension.test.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 43THU6L26P;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ferhanakkan.BabyAssitant.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Test;
+		};
+		3605867B24351AA200609BC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66584C894731F75219592161 /* Pods-BabyAssistant-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 43THU6L26P;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ferhanakkan.BabyAssitant.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		369B9B0C241FC0EF0000B426 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -952,7 +1146,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B6878BBD798FFAC37FAA2B76 /* Pods-BabyAssistant.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-debug";
+				CODE_SIGN_ENTITLEMENTS = "BabyAssistant/Baby Assistant.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 43THU6L26P;
 				INFOPLIST_FILE = "BabyAssistant/Supporting Files/PList/Info-debug.plist";
@@ -961,8 +1159,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ferhanakkan.BabyAssistant.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ferhanakkan.BabyAssitant.debug;
 				PRODUCT_NAME = "Baby Assistant";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -972,7 +1171,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E712C5CF1E0CC271A0B1AD4 /* Pods-BabyAssistant.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "BabyAssistant/Baby Assistant.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 43THU6L26P;
 				INFOPLIST_FILE = "BabyAssistant/Supporting Files/PList/Info.plist";
@@ -981,8 +1184,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ferhanakkan.BabyAssistant.release;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ferhanakkan.BabyAssitant;
 				PRODUCT_NAME = "Baby Assistant";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1052,7 +1256,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3485CFB9A944D54237B4A305 /* Pods-BabyAssistant.test.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-test";
+				CODE_SIGN_ENTITLEMENTS = "BabyAssistant/Baby Assistant.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 43THU6L26P;
 				INFOPLIST_FILE = "BabyAssistant/Supporting Files/PList/Info-test.plist";
@@ -1061,8 +1269,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ferhanakkan.BabyAssistant.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ferhanakkan.BabyAssitant.test;
 				PRODUCT_NAME = "Baby Assistant";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1071,6 +1280,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3605867824351AA200609BC4 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3605867924351AA200609BC4 /* Debug */,
+				3605867A24351AA200609BC4 /* Test */,
+				3605867B24351AA200609BC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		369B9AF5241FC0EC0000B426 /* Build configuration list for PBXProject "BabyAssistant" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

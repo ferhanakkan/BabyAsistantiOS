@@ -35,7 +35,7 @@ extension DailyPlanViewController:  UICollectionViewDelegate ,UICollectionViewDa
             cell.image.kf.setImage(with: self.dailyPlanViewModel.dailyPlanArray[indexPath.row].imageUrl)
         }
 
-        cell.time.text = "Fuck You"
+        cell.time.text = "Time Will Arrive"
         cell.title.text = dailyPlanViewModel.dailyPlanArray[indexPath.row].Title
         cell.subTitle.text = dailyPlanViewModel.dailyPlanArray[indexPath.row].Subtitle
         return cell
