@@ -20,9 +20,6 @@ target 'BabyAssistant' do
     pod 'Kingfisher', '5.8.1'
     pod 'SnapKit', '5.0.1'
     pod 'SkeletonView', '1.8.2'
-    pod 'QKMRZScanner', '2.0.0'
-    pod "FlagPhoneNumber", '0.7.8'
-    pod "Telefon"
     pod 'DLRadioButton', '1.4.12'
     pod 'KDCircularProgress', '1.5.4'
     pod 'HMSegmentedControl', '1.5.3'
@@ -33,7 +30,6 @@ target 'BabyAssistant' do
     pod 'Firebase/Core'
     pod 'Firebase/Firestore'
     pod 'Firebase/Storage'
-    pod 'Firebase/Messaging'
     pod 'Fabric', '~> 1.10.2'
     pod 'Firebase/Crashlytics'
     pod 'BEMCheckBox'

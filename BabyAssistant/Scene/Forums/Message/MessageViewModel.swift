@@ -17,12 +17,12 @@ class MessageViewModel {
     
     internal func setTableView(_ owner: MessageViewController) {
         owner.tableView = UITableView()
+        owner.tableView?.isSkeletonable = true
         owner.view.addSubview(owner.tableView!)
         owner.tableView!.snp.makeConstraints { (make) in
             make.leading.equalToSuperview().offset(5)
             make.trailing.equalToSuperview().offset(-5)
             make.top.equalToSuperview().offset(AppManager.shared.safeAreaTopInset+32)
-            make.bottom.equalToSuperview().offset(-69)
         }
         
         owner.tableView!.dataSource = owner
@@ -44,7 +44,8 @@ class MessageViewModel {
         view.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(65)
-            make.bottom.equalTo(AppManager.shared.safeAreaBottomInset)
+            make.top.equalTo(owner.tableView!.snp.bottom)
+            make.bottom.equalTo(owner.view.safeAreaLayoutGuide.snp.bottom)
         }
         
         owner.sendButton = UIButton()

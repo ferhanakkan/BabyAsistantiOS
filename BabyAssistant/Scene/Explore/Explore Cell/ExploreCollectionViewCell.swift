@@ -16,6 +16,7 @@ final class ExploreCollectionViewCell: UICollectionViewCell {
         view.image = UIImage(named: "eye")
         view.contentMode = .scaleToFill
         view.layer.cornerRadius = 15
+        view.isSkeletonable = true
         return view
     }()
     
@@ -26,7 +27,7 @@ final class ExploreCollectionViewCell: UICollectionViewCell {
         title.font = UIFont.boldSystemFont(ofSize: 30)
         title.textColor = .white
         title.text = "Test Yazisi"
-        
+        title.isSkeletonable = true
         return title
     }()
     
@@ -37,28 +38,30 @@ final class ExploreCollectionViewCell: UICollectionViewCell {
         title.font = UIFont.systemFont(ofSize: 15)
         title.textColor = .white
         title.text = "Test Yazisi"
-        
+        title.isSkeletonable = true
         return title
     }()
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        contentView.isSkeletonable = true
+        
         contentView.cornerRadius = 15
         contentView.addSubview(image)
-        image.addSubview(title)
-        image.addSubview(subTitle)
+        contentView.addSubview(title)
+        contentView.addSubview(subTitle)
         
         image.snp.makeConstraints { (make) in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
-        
+
         title.snp.makeConstraints { (make) in
             make.height.equalTo(20)
             make.trailing.equalToSuperview().offset(15)
             make.leading.equalToSuperview().offset(15)
             make.bottom.equalTo(subTitle.snp.top).offset(-7)
         }
-        
+
         subTitle.snp.makeConstraints { (make) in
             make.height.equalTo(20)
             make.trailing.equalToSuperview().offset(15)
@@ -67,6 +70,7 @@ final class ExploreCollectionViewCell: UICollectionViewCell {
         }
         
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

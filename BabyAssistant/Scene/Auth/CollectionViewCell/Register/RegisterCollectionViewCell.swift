@@ -23,6 +23,13 @@ class RegisterCollectionViewCell: UICollectionViewCell {
     
     let firebaseService = FirebaseUser()
     
+    lazy var width: NSLayoutConstraint = {
+        let width = contentView.widthAnchor.constraint(equalToConstant: bounds.size.width)
+        width.isActive = true
+        return width
+    }()
+    
+    
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         
@@ -72,4 +79,8 @@ class RegisterCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        width.constant = bounds.size.width
+        return contentView.systemLayoutSizeFitting(CGSize(width: targetSize.width, height: bounds.size.height))
+    }
 }

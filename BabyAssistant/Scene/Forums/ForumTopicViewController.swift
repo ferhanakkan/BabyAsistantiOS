@@ -20,7 +20,6 @@ final class ForumTopicViewController: BaseViewController {
         DispatchQueue.main.async {
             self.forumTopicViewModel.setTableView(self)
             self.forumTopicViewModel.getTopics(owner: self)
-
         }
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 final class DailyPlanViewController : BaseViewController {
     

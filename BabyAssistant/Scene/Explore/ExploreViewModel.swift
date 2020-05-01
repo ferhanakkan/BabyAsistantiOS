@@ -21,7 +21,6 @@ final class ExploreViewModel {
     internal func setUI(_ owner: ExploreViewController) {
         setViewController(owner)
         setCollectionView(owner)
-        
     }
     
     internal func setViewController(_ owner: ExploreViewController) {
@@ -51,7 +50,7 @@ final class ExploreViewModel {
         owner.collectionView?.delegate = owner
         owner.collectionView?.dataSource = owner
         owner.collectionView?.register(ExploreCollectionViewCell.self, forCellWithReuseIdentifier: "ExploreCollectionViewCell")
-        
+         owner.collectionView!.isSkeletonable = true
     }
     
     internal func fetchData(completion: @escaping(Bool) -> Void) {

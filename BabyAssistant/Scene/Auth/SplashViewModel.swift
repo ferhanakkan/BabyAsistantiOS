@@ -21,7 +21,7 @@ struct SplashViewModel {
         greenView.roundCornersEachCorner([.bottomLeft,.bottomRight], radius: 30)
         greenView.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(0)
-            make.height.equalTo(owner.view.frame.height*0.3)
+            make.height.equalTo(owner.view.frame.height*0.4)
             make.width.equalTo(owner.view.frame.width)
         }
         
@@ -35,10 +35,10 @@ struct SplashViewModel {
         owner.collectionView.isScrollEnabled = false
         owner.collectionView.snp.makeConstraints { (make) in
             make.leading.equalToSuperview().offset(20)
-            make.top.equalTo(owner.imageView!.snp.bottom).offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.bottom.equalToSuperview().offset(-20)
- 
+            make.top.greaterThanOrEqualTo(owner.imageView!.snp.bottom).offset(20)
+            make.centerY.equalToSuperview()
+            make.height.equalTo(400)
         }
     }
         
@@ -88,6 +88,10 @@ struct SplashViewModel {
     
     internal func collectionViewCell(indexPath: IndexPath, owner: SplashViewController) -> UICollectionViewCell{
         switch indexPath.row {
+            case 3:
+                let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "ResetPasswordCollectionViewCell", for: indexPath) as! ResetPasswordCollectionViewCell
+                cell.delegate = owner
+                return cell
         case 2:
             let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "ResetPasswordCollectionViewCell", for: indexPath) as! ResetPasswordCollectionViewCell
             cell.delegate = owner
@@ -106,13 +110,4 @@ struct SplashViewModel {
             return cell
         }
     }
-//    
-//    func setCollectionViewCellFlow(_ owner: SplashViewController) -> CGSize {
-//            let availableWidth = owner.collectionView.frame.width
-//            let sectionInset: CGFloat = 20.0
-//            let cellSpacing: CGFloat = 15.0
-//            let cellWidth = (availableWidth - sectionInset * 2 - cellSpacing) / 1
-//            let cellSize = CGSize(width: cellWidth.rounded(.down), height: 300)
-//            return cellSize
-//    }
 }

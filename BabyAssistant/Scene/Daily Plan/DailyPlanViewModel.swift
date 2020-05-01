@@ -41,6 +41,7 @@ final class DailyPlanViewModel {
         
         owner.collectionView = collectionView
         owner.view.addSubview(owner.collectionView!)
+        collectionView.isSkeletonable = true
         
         owner.collectionView!.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()

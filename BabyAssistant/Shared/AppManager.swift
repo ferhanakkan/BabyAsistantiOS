@@ -6,6 +6,7 @@
 //  Copyright © 2020 Ferhan Akkan. All rights reserved.
 //
 import UIKit
+import SkeletonView
 
 struct AppManager {
     
@@ -54,5 +55,29 @@ struct AppManager {
             return 0
         }
     }
-
+    
+     func showLoading(_ collectionView: UICollectionView){
+        collectionView.isSkeletonable = true
+        let gradient = SkeletonGradient(baseColor: UIColor.clouds)
+        let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .topLeftBottomRight)
+        collectionView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation, transition: .none)
+    }
+    
+     func hideLoading(_ collectionView: UICollectionView){
+        UIView.animate(withDuration: 0.1,delay: 0.0 ,options: .curveEaseIn, animations: {
+            collectionView.alpha = 1.0
+        })
+        collectionView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
+    }
+    
+     func hideLoading(_ imageView: UIImageView){
+        imageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
+    }
+    
+     func showLoading(_ imageView: UIImageView){
+        imageView.isSkeletonable = true
+        let gradient = SkeletonGradient(baseColor: UIColor.clouds)
+        let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .topLeftBottomRight)
+        imageView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation, transition: .none)
+    }
 }

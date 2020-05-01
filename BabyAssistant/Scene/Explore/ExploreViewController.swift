@@ -7,32 +7,45 @@
 //
 
 import UIKit
+import SkeletonView
 
 final class ExploreViewController : BaseViewController {
     
     let exploreViewModel = ExploreViewModel()
     
-    internal var collectionView: UICollectionView? = nil
-    
+    internal var collectionView: UICollectionView? = nil     
     override func viewDidLoad() {
         super.viewDidLoad()
         exploreViewModel.setUI(self)
+        AppManager.shared.showLoading(collectionView!)
         exploreViewModel.fetchData { (_) in
             self.collectionView?.reloadData()
+            AppManager.shared.hideLoading(self.collectionView!)
         }
     }
     
 }
 
-extension ExploreViewController:  UICollectionViewDelegate ,UICollectionViewDataSource  {
+extension ExploreViewController:  UICollectionViewDelegate ,SkeletonCollectionViewDataSource  {
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "ExploreCollectionViewCell"
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return exploreViewModel.exploreArray.count
      }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreCollectionViewCell", for: indexPath) as! ExploreCollectionViewCell
+        AppManager.shared.showLoading(cell.image)
         DispatchQueue.main.async {
             cell.image.kf.setImage(with: self.exploreViewModel.exploreArray[indexPath.row].image)
+            AppManager.shared.hideLoading(cell.image)
         }
         cell.title.text = exploreViewModel.exploreArray[indexPath.row].title
         cell.subTitle.text = exploreViewModel.exploreArray[indexPath.row].subtitle
