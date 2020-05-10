@@ -13,10 +13,8 @@ final class ExploreCollectionViewCell: UICollectionViewCell {
     
     let image: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "eye")
         view.contentMode = .scaleToFill
         view.layer.cornerRadius = 15
-        view.isSkeletonable = true
         return view
     }()
     
@@ -26,8 +24,6 @@ final class ExploreCollectionViewCell: UICollectionViewCell {
         title.textAlignment = .left
         title.font = UIFont.boldSystemFont(ofSize: 30)
         title.textColor = .white
-        title.text = "Test Yazisi"
-        title.isSkeletonable = true
         return title
     }()
     
@@ -37,14 +33,11 @@ final class ExploreCollectionViewCell: UICollectionViewCell {
         title.textAlignment = .left
         title.font = UIFont.systemFont(ofSize: 15)
         title.textColor = .white
-        title.text = "Test Yazisi"
-        title.isSkeletonable = true
         return title
     }()
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        contentView.isSkeletonable = true
         
         contentView.cornerRadius = 15
         contentView.addSubview(image)

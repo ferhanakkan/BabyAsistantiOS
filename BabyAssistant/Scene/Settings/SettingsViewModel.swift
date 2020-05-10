@@ -52,6 +52,7 @@ struct SettingsViewModel {
     
     internal func setTableView(_ owner: SettingViewController) {
         owner.tableView = UITableView()
+        
         owner.view.addSubview(owner.tableView!)
         owner.tableView!.snp.makeConstraints { (make) in
             make.leading.equalToSuperview().offset(5)
@@ -63,9 +64,8 @@ struct SettingsViewModel {
         owner.tableView!.dataSource = owner
         owner.tableView!.delegate = owner
         owner.tableView?.isScrollEnabled = false
-        
+        owner.tableView!.tableFooterView = UIView(frame: .zero)
         owner.tableView!.backgroundColor = .white
-        owner.tableView!.separatorColor = .clear
     }
     
     
@@ -158,9 +158,9 @@ struct SettingsViewModel {
         case 1:
             cell.textLabel?.text = "Delete User"
             cell.accessoryType = .detailButton
-        case 2:
-            cell.textLabel?.text = "Edit Language"
-            cell.accessoryType = .disclosureIndicator
+//        case 2:
+//            cell.textLabel?.text = "Edit Language"
+//            cell.accessoryType = .disclosureIndicator
         default:
             break
         }
@@ -198,9 +198,9 @@ struct SettingsViewModel {
             alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
             }))
             owner.present(alert, animated: true)
-        case 2:
-            let vc = LanguageViewController()
-            owner.navigationController?.show(vc, sender: nil)
+//        case 2:
+//            let vc = LanguageViewController()
+//            owner.navigationController?.show(vc, sender: nil)
         default:
             break
         }

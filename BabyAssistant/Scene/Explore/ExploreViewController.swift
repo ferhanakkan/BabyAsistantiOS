@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SkeletonView
 
 final class ExploreViewController : BaseViewController {
     
@@ -26,11 +25,11 @@ final class ExploreViewController : BaseViewController {
     
 }
 
-extension ExploreViewController:  UICollectionViewDelegate ,SkeletonCollectionViewDataSource  {
+extension ExploreViewController:  UICollectionViewDelegate ,UICollectionViewDataSource  {
     
-    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return "ExploreCollectionViewCell"
-    }
+//    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+//        return "ExploreCollectionViewCell"
+//    }
     
     func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
@@ -42,19 +41,20 @@ extension ExploreViewController:  UICollectionViewDelegate ,SkeletonCollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreCollectionViewCell", for: indexPath) as! ExploreCollectionViewCell
-        AppManager.shared.showLoading(cell.image)
+//        AppManager.shared.showLoading(cell.image)
+        
         DispatchQueue.main.async {
             cell.image.kf.setImage(with: self.exploreViewModel.exploreArray[indexPath.row].image)
-            AppManager.shared.hideLoading(cell.image)
+            cell.title.text = self.exploreViewModel.exploreArray[indexPath.row].title
+            cell.subTitle.text = self.exploreViewModel.exploreArray[indexPath.row].subtitle
         }
-        cell.title.text = exploreViewModel.exploreArray[indexPath.row].title
-        cell.subTitle.text = exploreViewModel.exploreArray[indexPath.row].subtitle
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let vc = ExploreDetailViewController()
+        vc.hidesBottomBarWhenPushed = true
         vc.exploreDetailViewModel.titleData = exploreViewModel.exploreArray[indexPath.row]
         navigationController?.show(vc, sender: nil)
     }

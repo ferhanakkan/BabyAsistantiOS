@@ -14,7 +14,6 @@ final class ExploreDetailCollectionViewCell: UICollectionViewCell {
     
     let image: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "eye")
         view.contentMode = .scaleToFill
         view.layer.cornerRadius = 15
         return view
@@ -22,14 +21,22 @@ final class ExploreDetailCollectionViewCell: UICollectionViewCell {
     
     let title: UILabel = {
         let title = UILabel()
-        title.numberOfLines = 0
         title.textAlignment = .center
         title.font = UIFont.systemFont(ofSize: 15)
         title.textColor = .black
-        title.text = "Test Yazisi"
+        title.numberOfLines = 0
         return title
     }()
     
+    lazy var width: NSLayoutConstraint = {
+        let width = contentView.widthAnchor.constraint(equalToConstant: bounds.size.width)
+        width.isActive = true
+        return width
+    }()
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        width.constant = bounds.size.width
+        return contentView.systemLayoutSizeFitting(CGSize(width: targetSize.width, height: bounds.size.height))
+    }
 
 
     override init(frame: CGRect) {
@@ -38,11 +45,13 @@ final class ExploreDetailCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(title)
         
         image.snp.makeConstraints { (make) in
+            make.height.equalTo(450)
             make.top.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
         }
         
         title.snp.makeConstraints { (make) in
+            make.height.greaterThanOrEqualTo(30)
             make.leading.equalToSuperview().offset(30)
             make.trailing.bottom.equalToSuperview().offset(-30)
             make.top.equalTo(image.snp.bottom).offset(30)

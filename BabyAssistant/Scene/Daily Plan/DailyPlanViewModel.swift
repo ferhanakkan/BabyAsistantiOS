@@ -10,12 +10,12 @@
 import UIKit
 import SnapKit
 import Firebase
+import RealmSwift
 
 final class DailyPlanViewModel {
     
-    let firebase = FirebaseDatabase()
-    
-    lazy var dailyPlanArray: [DailyPlanModel] = []
+    lazy var dailyPlanArray: [DailyPlanRealmModel] = []
+    var dailyPlanDetailViewModel = DailyPlanDetailViewModel()
     
     //MARK: - Setup UI
     
@@ -30,14 +30,14 @@ final class DailyPlanViewModel {
     
     internal func setCollectionView(_ owner: DailyPlanViewController) {
         let collectionView: UICollectionView = {
-                let layout = UICollectionViewFlowLayout()
-//                layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-                layout.scrollDirection = .vertical
-            layout.itemSize = CGSize(width: owner.view.frame.width*0.9, height: 200) // make it self size !!!!
-                let collectionview = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0 ), collectionViewLayout: layout)
-                collectionview.backgroundColor = .clear
-                return collectionview
-            }()
+            let layout = UICollectionViewFlowLayout()
+            layout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+            layout.scrollDirection = .vertical
+            layout.itemSize = CGSize(width: owner.view.frame.width*0.9, height: 200)
+            let collectionview = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0 ), collectionViewLayout: layout)
+            collectionview.backgroundColor = .clear
+            return collectionview
+        }()
         
         owner.collectionView = collectionView
         owner.view.addSubview(owner.collectionView!)
@@ -52,15 +52,18 @@ final class DailyPlanViewModel {
         owner.collectionView?.delegate = owner
         owner.collectionView?.dataSource = owner
         owner.collectionView?.register(DailyPlanCollectionViewCell.self, forCellWithReuseIdentifier: "DailyPlanCollectionViewCell")
+        owner.collectionView?.register(DailyPlanNonCollectionViewCell.self, forCellWithReuseIdentifier: "DailyPlanNonCollectionViewCell")
         
     }
     
     internal func fetchData(completion: @escaping(Bool) -> Void) {
-        firebase.getDailyPlanDetails { (data) in
-            self.dailyPlanArray = data
-            completion(true)
+        let realm = try! Realm()
+        let res = realm.objects(DailyPlanRealmModel.self)
+        dailyPlanArray.removeAll()
+        for data in res {
+            self.dailyPlanArray.append(data)
         }
-        
+        completion(true)
     }
     
 }

@@ -176,57 +176,29 @@ final class FirebaseDatabase {
                     for document in snapshot!.documents {
                         if let title = document.get("Title") as? String, let imageUrl = document.get("imageUrl") as? String {
                             let storage = Storage.storage()
-                            let gsReference = storage.reference(forURL:imageUrl)
-                            
-                            
-                            gsReference.downloadURL { url, error in
-                                if let error = error {
-                                    print(error)
-                                } else {
-                                    let data = ExploreDetailModel(title: title,imageUrl: url!)
-                                    self.exploreDetailArray.append(data)
-                                    if index == snapshot!.documents.count-1 {
-                                        completion(self.exploreDetailArray)
+                            if title != "Video" {
+                                let gsReference = storage.reference(forURL:imageUrl)
+                                gsReference.downloadURL { url, error in
+                                    if let error = error {
+                                        print(error)
+                                    } else {
+                                        let data = ExploreDetailModel(title: title,imageUrl: url!)
+                                        self.exploreDetailArray.append(data)
+                                        if index == snapshot!.documents.count-1 {
+                                            self.exploreDetailArray.reverse()
+                                            completion(self.exploreDetailArray)
+                                        }
+                                        index += 1
                                     }
-                                    index += 1
                                 }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    internal func getDailyPlanDetails(completion: @escaping([DailyPlanModel]) -> Void) {
-        let fireStoreDatabase = Firestore.firestore()
-        fireStoreDatabase.collection("DailyPlan").order(by: "Time").addSnapshotListener { (snapshot, error) in
-            if error != nil {
-                print(error!)
-            } else {
-                if snapshot?.isEmpty != true && snapshot != nil {
-                    self.dailyPlanArray.removeAll()
-                    var index = 0
-                    for document in snapshot!.documents {
-                        if let title = document.get("Title") as? String, let subtitle = document.get("Subtitle") as? String, let imageUrl = document.get("imageUrl") as? String, let date = document.get("Time") as? Timestamp {
-                            let storage = Storage.storage()
-                            let gsReference = storage.reference(forURL:imageUrl)
-    
-                            let convertTime = Date(timeIntervalSince1970: Double(date.seconds))
-                            print(convertTime)
-                            
-                            
-                            gsReference.downloadURL { url, error in
-                                if let error = error {
-                                    print(error)
-                                } else {
-                                    let data = DailyPlanModel(Time: convertTime, Title: title, Subtitle: subtitle, imageUrl: url!)
-                                    self.dailyPlanArray.append(data)
-                                    if index == snapshot!.documents.count-1 {
-                                        completion(self.dailyPlanArray)
-                                    }
-                                    index += 1
+                            }  else {
+                                let data = ExploreDetailModel(title: title,imageUrl: URL(string: imageUrl)!)
+                                self.exploreDetailArray.append(data)
+                                if index == snapshot!.documents.count-1 {
+                                    self.exploreDetailArray.reverse()
+                                    completion(self.exploreDetailArray)
                                 }
+                                index += 1
                             }
                         }
                     }

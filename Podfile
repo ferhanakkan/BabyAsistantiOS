@@ -12,6 +12,7 @@ end
 target 'BabyAssistant' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+    pod 'RealmSwift'
     pod 'PromisesSwift'
     pod 'NotificationBannerSwift', '2.2.2'
     pod 'Alamofire', '5.0.0-rc.2'

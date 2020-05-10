@@ -15,6 +15,16 @@ final class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var rightImageView: UIImageView!
     @IBOutlet weak var leftImageView: UIImageView!
+    @IBOutlet weak var writenByLabel: UILabel!
+    
+    var data: Data? = nil {
+        didSet {
+            DispatchQueue.main.async {
+                self.leftImageView.image = UIImage(data: self.data!)
+            }
+        }
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,8 +43,6 @@ final class MessageTableViewCell: UITableViewCell {
                 self.rightImageView.image = UIImage(named: "avatar")
             }
         }
-        
-        //Must set left image ?????????
     }
 
         override func setSelected(_ selected: Bool, animated: Bool) {

@@ -112,6 +112,12 @@ extension BaseViewController: SidebarViewDelegate {
             navigationController?.show(vc, sender: nil)
         case .rate:
             SKStoreReviewController.requestReview()
+        case .babyNames:
+            print("baby Names")
+        case .donate:
+            let vc = DonateViewController()
+            vc.modalPresentationStyle = .overFullScreen
+            present(vc, animated: true, completion: nil)
         case .signOut:
             firebaseUser.signOut()
         case .none:

@@ -35,6 +35,16 @@ final class SplashViewController: UIViewController , CollectionViewIndexPicker {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newTitleButtonPressed))
+    }
+
+    @objc private func newTitleButtonPressed() {
+        let vc = NewTopicViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc,animated: true)
+    }
 }
 
 //MARK: - CollectionView Setting

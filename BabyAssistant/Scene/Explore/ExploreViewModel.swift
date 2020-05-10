@@ -29,14 +29,14 @@ final class ExploreViewModel {
     
     internal func setCollectionView(_ owner: ExploreViewController) {
         let collectionView: UICollectionView = {
-                let layout = UICollectionViewFlowLayout()
-//                layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+            let layout = UICollectionViewFlowLayout()
+            layout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: owner.view.frame.width*0.9, height: owner.view.frame.width*0.9*5/8) 
-                let collectionview = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0 ), collectionViewLayout: layout)
-                collectionview.backgroundColor = .clear
-                return collectionview
-            }()
+            let collectionview = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0 ), collectionViewLayout: layout)
+            collectionview.backgroundColor = .clear
+            return collectionview
+        }()
         
         owner.collectionView = collectionView
         owner.view.addSubview(owner.collectionView!)

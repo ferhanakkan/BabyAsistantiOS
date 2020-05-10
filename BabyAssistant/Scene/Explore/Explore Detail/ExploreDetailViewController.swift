@@ -35,7 +35,7 @@ extension ExploreDetailViewController: UICollectionViewDelegate ,UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+                
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreDetailTitleCollectionViewCell", for: indexPath) as! ExploreDetailTitleCollectionViewCell
             cell.title.text = exploreDetailViewModel.titleData?.title
@@ -44,6 +44,10 @@ extension ExploreDetailViewController: UICollectionViewDelegate ,UICollectionVie
             }
             return cell
             
+        } else if exploreDetailViewModel.exploreDetailArray![indexPath.row-1].title == "Video" {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreDetailVideoCollectionViewCell", for: indexPath) as! ExploreDetailVideoCollectionViewCell
+            cell.url = exploreDetailViewModel.exploreDetailArray![indexPath.row-1].imageUrl.absoluteString
+                return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreDetailCollectionViewCell", for: indexPath) as! ExploreDetailCollectionViewCell
             cell.title.text = exploreDetailViewModel.exploreDetailArray![indexPath.row-1].title

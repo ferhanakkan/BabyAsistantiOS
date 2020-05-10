@@ -28,14 +28,11 @@
 
 @implementation FIRCLSReportAdapter
 
-- (instancetype)initWithPath:(NSString *)folderPath
-                 googleAppId:(NSString *)googleAppID
-                       orgId:(NSString *)orgID {
+- (instancetype)initWithPath:(NSString *)folderPath googleAppId:(NSString *)googleAppID {
   self = [super init];
   if (self) {
     _folderPath = folderPath;
     _googleAppID = googleAppID;
-    _orgID = orgID;
 
     [self loadMetaDataFile];
 
@@ -158,6 +155,10 @@
   google_crashlytics_FilesPayload_File *files =
       malloc(sizeof(google_crashlytics_FilesPayload_File) * clsRecords.count);
 
+  if (files == NULL) {
+    // files and files_count are initialized to NULL and 0 by default.
+    return apple_payload;
+  }
   for (NSUInteger i = 0; i < clsRecords.count; i++) {
     google_crashlytics_FilesPayload_File file = google_crashlytics_FilesPayload_File_init_default;
     file.filename = FIRCLSEncodeString(clsRecords[i].lastPathComponent);
@@ -175,7 +176,6 @@
 
   apple_payload.files = files;
   apple_payload.files_count = (pb_size_t)clsRecords.count;
-  apple_payload.org_id = FIRCLSEncodeString(self.orgID);
 
   return apple_payload;
 }
@@ -194,7 +194,9 @@
 
   [files enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     NSString *filename = (NSString *)obj;
-    if ([filename.pathExtension.lowercaseString isEqualToString:@"clsrecord"]) {
+    NSString *lowerExtension = filename.pathExtension.lowercaseString;
+    if ([lowerExtension isEqualToString:@"clsrecord"] ||
+        [lowerExtension isEqualToString:@"symbolicated"]) {
       [clsRecords addObject:[self.folderPath stringByAppendingPathComponent:filename]];
     }
   }];
@@ -232,6 +234,9 @@ pb_bytes_array_t *FIRCLSEncodeString(NSString *string) {
  */
 pb_bytes_array_t *FIRCLSEncodeData(NSData *data) {
   pb_bytes_array_t *pbBytes = malloc(PB_BYTES_ARRAY_T_ALLOCSIZE(data.length));
+  if (pbBytes == NULL) {
+    return NULL;
+  }
   memcpy(pbBytes->bytes, [data bytes], data.length);
   pbBytes->size = (pb_size_t)data.length;
   return pbBytes;

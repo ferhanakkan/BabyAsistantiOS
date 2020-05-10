@@ -18,6 +18,7 @@ final class ExploreDetailViewModel {
     //MARK: - Setup UI
     
     internal func setUI(_ owner: ExploreDetailViewController) {
+        
         setViewController(owner)
         setCollectionView(owner)
         
@@ -30,29 +31,28 @@ final class ExploreDetailViewModel {
     internal func setCollectionView(_ owner: ExploreDetailViewController) {
         let collectionView: UICollectionView = {
                 let layout = UICollectionViewFlowLayout()
-//                layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
                 layout.scrollDirection = .vertical
-            layout.itemSize = CGSize(width: owner.view.frame.width, height: owner.view.frame.width*0.9*5/8)
+                layout.estimatedItemSize = CGSize(width: owner.view.frame.width, height: 1)
                 let collectionview = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0 ), collectionViewLayout: layout)
                 collectionview.backgroundColor = .clear
                 return collectionview
             }()
         
         owner.collectionView = collectionView
-//        owner.collectionView?.isScrollEnabled = true
         owner.view.addSubview(owner.collectionView!)
         owner.collectionView?.isUserInteractionEnabled = true
         
         owner.collectionView!.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview().offset(AppManager.shared.safeAreaTopInset+32)
-            make.bottom.equalToSuperview().offset(AppManager.shared.safeAreaBottomInset-32)
+            make.bottom.equalTo(owner.view.safeAreaLayoutGuide.snp.bottom)
         }
         
         owner.collectionView?.delegate = owner
         owner.collectionView?.dataSource = owner
         owner.collectionView?.register(ExploreDetailCollectionViewCell.self, forCellWithReuseIdentifier: "ExploreDetailCollectionViewCell")
         owner.collectionView?.register(ExploreDetailTitleCollectionViewCell.self, forCellWithReuseIdentifier: "ExploreDetailTitleCollectionViewCell")
+        owner.collectionView?.register(ExploreDetailVideoCollectionViewCell.self, forCellWithReuseIdentifier: "ExploreDetailVideoCollectionViewCell")
         
     }
     

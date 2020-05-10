@@ -11,14 +11,14 @@ import UIKit
 extension UIView {
     
 @IBInspectable var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.masksToBounds = true
-            layer.cornerRadius = abs(CGFloat(Int(newValue * 100)) / 100)
-        }
+    get {
+        return layer.cornerRadius
     }
+    set {
+        layer.masksToBounds = true
+        layer.cornerRadius = abs(CGFloat(Int(newValue * 100)) / 100)
+    }
+}
     
     func roundCornersEachCorner(_ corners: UIRectCorner, radius: CGFloat) {
         if #available(iOS 11.0, *) {

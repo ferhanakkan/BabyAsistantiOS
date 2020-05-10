@@ -19,6 +19,8 @@ enum Row: String {
     case editProfile
     case settings
     case rate
+    case babyNames
+    case donate
     case signOut
     case none
     
@@ -27,7 +29,9 @@ enum Row: String {
         case 0: self = .editProfile
         case 1: self = .settings
         case 2: self = .rate
-        case 3: self = .signOut
+        case 3: self = .babyNames
+        case 4: self = .donate
+        case 5: self = .signOut
         default: self = .none
         }
     }
@@ -44,7 +48,7 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.backgroundColor = .backgroundGreen
         self.clipsToBounds=true
         
-        titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Default Name")","Settings","Rate Us",  "Sign Out"]
+        titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Default Name")","Settings","Rate Us", "Baby Names (Upcoming)","Donate", "Sign Out"]
         
         setupViews()
         
@@ -52,7 +56,6 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
         myTableView.dataSource=self
         myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         myTableView.tableFooterView=UIView()
-        myTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         myTableView.allowsSelection = true
         myTableView.bounces=false
         myTableView.showsVerticalScrollIndicator=false

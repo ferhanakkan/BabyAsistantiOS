@@ -17,6 +17,7 @@ class ForumTopicViewModel {
     
     internal func setTableView(_ owner: ForumTopicViewController) {
         owner.tableView = UITableView()
+        owner.tableView!.tableFooterView = UIView(frame: .zero)
         owner.view.addSubview(owner.tableView!)
         owner.tableView!.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()

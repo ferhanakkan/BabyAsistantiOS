@@ -13,7 +13,6 @@ final class ExploreDetailTitleCollectionViewCell: UICollectionViewCell {
     
     let image: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "eye")
         view.contentMode = .scaleToFill
         view.layer.cornerRadius = 15
         return view
@@ -25,10 +24,19 @@ final class ExploreDetailTitleCollectionViewCell: UICollectionViewCell {
         title.textAlignment = .left
         title.font = UIFont.boldSystemFont(ofSize: 25)
         title.textColor = .white
-        title.text = "Test Yazisi"
         return title
     }()
     
+    lazy var width: NSLayoutConstraint = {
+        let width = contentView.widthAnchor.constraint(equalToConstant: bounds.size.width)
+        width.isActive = true
+        return width
+    }()
+    
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        width.constant = bounds.size.width
+        return contentView.systemLayoutSizeFitting(CGSize(width: targetSize.width, height: bounds.size.height))
+    }
 
 
     override init(frame: CGRect) {
@@ -39,6 +47,7 @@ final class ExploreDetailTitleCollectionViewCell: UICollectionViewCell {
         image.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(contentView.snp.height)
+            make.height.equalTo(200)
         }
         
         title.snp.makeConstraints { (make) in

@@ -64,18 +64,25 @@ extension MessageViewController: UITableViewDataSource , UITableViewDelegate {
                 cell.rightImageView.isHidden = false
                 cell.backgroundColor = .backgroundGreen
                 cell.messageBubble.backgroundColor = .gray
+                cell.writenByLabel.textColor = .gray
+                cell.writenByLabel.text = "Writen By: \(messageViewModel.messageModel[indexPath.section].username)"
+                cell.writenByLabel.textAlignment = .right
+                cell.label.textAlignment = .right
                 
             } else {
                 messageViewModel.getUserImage(username: messageViewModel.messageModel[indexPath.section].username) { (data) in
-                    DispatchQueue.main.async {
-                        cell.leftImageView.image = UIImage(data: data)
-                    }
+                    cell.data = data
                 }
+                cell.label.textAlignment = .left
                 cell.leftImageView.layer.borderColor = UIColor.backgroundGreen.cgColor
                 cell.rightImageView.isHidden = true
                 cell.leftImageView.isHidden = false
                 cell.backgroundColor = .gray
                 cell.messageBubble.backgroundColor = .backgroundGreen
+                cell.writenByLabel.isHidden = false
+                cell.writenByLabel.textColor = .white
+                cell.writenByLabel.textAlignment = .left
+                cell.writenByLabel.text = "Writen By: \(messageViewModel.messageModel[indexPath.section].username)"
             }
             return cell
         }

@@ -17,7 +17,6 @@ final class LanguageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.backgroundColor = .white
         setTableView()
     }
@@ -78,9 +77,8 @@ extension LanguageViewController: UITableViewDataSource, UITableViewDelegate {
         
         tableView!.dataSource = self
         tableView!.delegate = self
-        
+        tableView!.tableFooterView = UIView(frame: .zero)
         tableView!.backgroundColor = .white
-//        tableView!.separatorStyle = .none
     }
     
 }

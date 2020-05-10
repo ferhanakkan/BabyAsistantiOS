@@ -4,7 +4,7 @@
 //
 //  Created by Ferhan Akkan on 24.03.2020.
 //  Copyright © 2020 Ferhan Akkan. All rights reserved.
-//
+//vb
 
 import SnapKit
 import UIKit
@@ -30,6 +30,7 @@ class MessageViewModel {
         
         owner.tableView!.backgroundColor = .white
         owner.tableView!.separatorColor = .clear
+        owner.tableView!.contentInset.bottom = 5
         
         owner.tableView!.register(UINib(nibName: "TitleTopiceTableViewCell", bundle: nil), forCellReuseIdentifier: "TitleTopiceTableViewCell")
         owner.tableView!.register(UINib(nibName: "MessageTableViewCell", bundle: nil), forCellReuseIdentifier: "MessageTableViewCell")
@@ -71,8 +72,18 @@ class MessageViewModel {
             make.bottom.equalToSuperview().offset(-5)
             make.top.equalToSuperview().offset(5)
         })
+        
+        let viewSafe = UIView()
+        viewSafe.backgroundColor = .backgroundGreen
+        owner.view.addSubview(viewSafe)
+        
+        viewSafe.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.trailing.leading.equalToSuperview()
+            make.top.equalTo(view.snp.bottom)
+        }
     }
-    
+        
     internal func getMessage(owner: MessageViewController) {
         firebaseDatabase.getSelectedTopicMessage(owner: owner) { (data) in
             self.messageModel = data
