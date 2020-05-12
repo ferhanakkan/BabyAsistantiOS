@@ -23,9 +23,18 @@ struct AppManager {
         } catch {
             assertionFailure("Unable to start\nnotifier")
         }
-
-        reachability.whenUnreachable = { reachability in
-            self.messagePresent(title: "OOOPS!!!", message: "Internet connection has been lost. Try again", type: .error)
+        
+       reachability.whenUnreachable = { reachability in
+            let alert = UIAlertController(title: "Your internet connection has been lost!", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: .cancel, handler: { action in
+                if self.reachability.connection == .unavailable {
+                    UIApplication.getPresentedViewController()!.present(alert, animated: true, completion: nil)
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Quit", style: .default, handler: { action in
+                exit(0)
+            }))
+            UIApplication.getPresentedViewController()!.present(alert, animated: true, completion: nil)
         }
     }
     

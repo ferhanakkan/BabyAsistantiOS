@@ -50,7 +50,11 @@ extension ExploreDetailViewController: UICollectionViewDelegate ,UICollectionVie
                 return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExploreDetailCollectionViewCell", for: indexPath) as! ExploreDetailCollectionViewCell
-            cell.title.text = exploreDetailViewModel.exploreDetailArray![indexPath.row-1].title
+            
+
+            
+            cell.title.text = exploreDetailViewModel.exploreDetailArray![indexPath.row-1].title.replacingOccurrences(of: "\\n", with: "\n")
+
             DispatchQueue.main.async {
                 cell.image.kf.setImage(with: self.exploreDetailViewModel.exploreDetailArray![indexPath.row-1].imageUrl)
             }

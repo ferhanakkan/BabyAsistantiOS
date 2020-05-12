@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let newScene = (scene as? UIWindowScene) else { return }
-        
+
         window = UIWindow(windowScene: newScene)
         selectRoot()
         window?.makeKeyAndVisible()
@@ -53,18 +53,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private func selectRoot() {
-        let currentUser = Auth.auth().currentUser
-        if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
-            if currentUser != nil && rememberMe {
-                window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
+         /*   let currentUser = Auth.auth().currentUser
+            if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
+                if currentUser != nil && rememberMe {
+                    window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
+                } else {
+                    window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
+                }
+                
             } else {
                 window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
-            }
+            }*/
             
-        } else {
-            window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
+            window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
         }
-    }
 
 }
 

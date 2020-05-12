@@ -12,4 +12,5 @@ struct ExploreModel {
     let title: String
     let subtitle: String
     let image: URL
+    let time: Int
 }

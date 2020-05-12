@@ -107,9 +107,15 @@ extension BaseViewController: SidebarViewDelegate {
         }
         switch row {
         case .editProfile, .settings:
-            let vc = SettingViewController()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.show(vc, sender: nil)
+            if Auth.auth().currentUser != nil {
+                let vc = SettingViewController()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.show(vc, sender: nil)
+            } else {
+                let vc = SplashViewController()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.show(vc, sender: nil)
+            }
         case .rate:
             SKStoreReviewController.requestReview()
         case .babyNames:

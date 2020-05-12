@@ -138,7 +138,7 @@ final class FirebaseDatabase {
                     self.exploreArray.removeAll()
                     var index = 0
                     for document in snapshot!.documents {
-                        if let title = document.get("Title") as? String, let subTitle = document.get("Subtitle") as? String, let imageUrl = document.get("imageUrl") as? String {
+                        if let title = document.get("Title") as? String, let subTitle = document.get("Subtitle") as? String, let imageUrl = document.get("imageUrl") as? String, let time = document.get("Time") as? Int{
                             
                             let storage = Storage.storage()
                             let gsReference = storage.reference(forURL:imageUrl)
@@ -148,10 +148,10 @@ final class FirebaseDatabase {
                                 if let error = error {
                                     print(error)
                                 } else {
-                                    let data = ExploreModel(title: title, subtitle: subTitle, image: url!)
+                                    let data = ExploreModel(title: title, subtitle: subTitle, image: url!, time: time)
                                     self.exploreArray.append(data)
-                                    print("count explorearray \(self.exploreArray.count)")
                                     if index == snapshot!.documents.count-1 {
+                                        self.exploreArray =  self.exploreArray.sorted{ $0.time < $1.time }
                                         completion(self.exploreArray)
                                     }
                                     index += 1
@@ -166,7 +166,7 @@ final class FirebaseDatabase {
     
     internal func getExploreDetails(title:String, completion: @escaping([ExploreDetailModel]) -> Void) {
         let fireStoreDatabase = Firestore.firestore()
-        fireStoreDatabase.collection("ExploreTopics").document(title).collection("Detail").order(by: "Time").addSnapshotListener { (snapshot, error) in
+        fireStoreDatabase.collection("ExploreTopics").document(title).collection("Detail").order(by: "Time", descending: true).addSnapshotListener { (snapshot, error) in
             if error != nil {
                 print(error!)
             } else {
@@ -174,7 +174,7 @@ final class FirebaseDatabase {
                     self.exploreArray.removeAll()
                     var index = 0
                     for document in snapshot!.documents {
-                        if let title = document.get("Title") as? String, let imageUrl = document.get("imageUrl") as? String {
+                        if let title = document.get("Title") as? String, let imageUrl = document.get("imageUrl") as? String, let time = document.get("Time") as? Int{
                             let storage = Storage.storage()
                             if title != "Video" {
                                 let gsReference = storage.reference(forURL:imageUrl)
@@ -182,20 +182,20 @@ final class FirebaseDatabase {
                                     if let error = error {
                                         print(error)
                                     } else {
-                                        let data = ExploreDetailModel(title: title,imageUrl: url!)
+                                        let data = ExploreDetailModel(title: title,imageUrl: url!, time: time)
                                         self.exploreDetailArray.append(data)
                                         if index == snapshot!.documents.count-1 {
-                                            self.exploreDetailArray.reverse()
+                                            self.exploreDetailArray =  self.exploreDetailArray.sorted{ $0.time < $1.time }
                                             completion(self.exploreDetailArray)
                                         }
                                         index += 1
                                     }
                                 }
                             }  else {
-                                let data = ExploreDetailModel(title: title,imageUrl: URL(string: imageUrl)!)
+                                let data = ExploreDetailModel(title: title,imageUrl: URL(string: imageUrl)!, time: time)
                                 self.exploreDetailArray.append(data)
                                 if index == snapshot!.documents.count-1 {
-                                    self.exploreDetailArray.reverse()
+                                    self.exploreDetailArray =  self.exploreDetailArray.sorted{ $0.time < $1.time }
                                     completion(self.exploreDetailArray)
                                 }
                                 index += 1

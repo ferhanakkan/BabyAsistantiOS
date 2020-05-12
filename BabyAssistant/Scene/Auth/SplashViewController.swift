@@ -9,68 +9,100 @@
 import UIKit
 import SnapKit
 
-final class SplashViewController: UIViewController , CollectionViewIndexPicker {
+class SplashViewController: UIViewController {
     
-    private let splashViewModel = SplashViewModel()
+    //MARK: - Properties
     
-    internal lazy var imageView:UIImageView? = nil
-    
-    internal var collectionView: UICollectionView = {
+    let backgroundView = UIView()
+    let imageView = UIImageView()
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width*0.9, height: 1)
         let collectionview = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0 ), collectionViewLayout: layout)
         collectionview.backgroundColor = .clear
+        collectionview.isPagingEnabled = true
+        collectionview.isScrollEnabled = false
+        collectionview.register(RegisterColletionViewCell.self, forCellWithReuseIdentifier: "RegisterColletionViewCell")
+        collectionview.register(LogInColletionViewCell.self, forCellWithReuseIdentifier: "LogInColletionViewCell")
+        collectionview.register(ForgotColletionViewCell.self, forCellWithReuseIdentifier: "ForgotColletionViewCell")
         return collectionview
     }()
     
+    let authViewModel = SplashViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.async {
-            self.view.backgroundColor = .white
-            self.splashViewModel.setGreenView(owner: self)
-            self.splashViewModel.setImage(self)
-            self.splashViewModel.setCollectionView(owner: self)
-            self.splashViewModel.collectionViewSetup(owner: self)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newTitleButtonPressed))
-    }
-
-    @objc private func newTitleButtonPressed() {
-        let vc = NewTopicViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        present(vc,animated: true)
+        setView()
+        setBackgroundView()
+        setImageView()
+        setCollectionView()
     }
 }
 
-//MARK: - CollectionView Setting
-
-extension SplashViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    //MARK: - Setup UI
+extension SplashViewController {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 100
+    private func setView() {
+        view.backgroundColor = .white
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
+    private func setBackgroundView() {
+        view.addSubview(backgroundView)
+        backgroundView.snp.makeConstraints { (make) in
+            make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(view.frame.height*0.6)
+        }
+        backgroundView.roundCornersEachCorner([.bottomLeft, .bottomRight], radius: 20)
+        backgroundView.backgroundColor = .backgroundGreen
+    }
+    
+    private func setImageView() {
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.height.width.equalTo(70)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+        }
+        imageView.image = #imageLiteral(resourceName: "babylogo")
+    }
+    
+    private func setCollectionView() {
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalTo(imageView.snp.bottom).offset(20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(20)
+        }
+    }
+}
+
+    //MARK: - CollectionView Delegate & Datasource
+
+extension SplashViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CollectionViewIndexSelector {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-        
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        splashViewModel.collectionViewCell(indexPath: indexPath, owner: self)
+        return authViewModel.collectionViewCell(indexPath: indexPath, owner: self)
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        splashViewModel.collectionViewScroolEndEditing(self)
-    }
-    
-    func selectedCollectionViewRoad(row: Int) {
-        splashViewModel.collectionViewSetShowCell(row: row, owner: self)
+    func selectedCollectionViewIndex(row: Int) {
+        let index = IndexPath(row: row, section: 0)
+        collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
     }
 }
+
 
 

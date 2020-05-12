@@ -19,6 +19,4 @@ extension UIApplication{
         
         return presentViewController
     }
-    
-    
 }

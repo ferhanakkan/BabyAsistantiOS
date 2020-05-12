@@ -15,12 +15,8 @@ class Tabbar {
         
         let tabController = UITabBarController()
 
-        //Storyboard usage
         let explore = ExploreViewController()
         let profilePage = DailyPlanViewController()
-        let forum = ForumTopicViewController()
-        
-       
         
         if let imageUrl = Auth.auth().currentUser?.photoURL {
             let data = try? Data(contentsOf: imageUrl)
@@ -28,23 +24,48 @@ class Tabbar {
         }
         
         
-        explore.title = "Explore"
-        profilePage.title = "Daily Plan"
-        forum.title = "Forum"
+        if Auth.auth().currentUser != nil {
+            let forum = ForumTopicViewController()
+            
+            explore.title = "Explore"
+            profilePage.title = "Daily Plan"
+            forum.title = "Forum"
 
-        tabController.viewControllers = [UINavigationController(rootViewController: explore),UINavigationController(rootViewController: profilePage),UINavigationController(rootViewController: forum)]
-        
-        tabController.tabBar.backgroundColor = .backgroundGreen
-        tabController.tabBar.barTintColor = .backgroundGreen
-        tabController.tabBar.tintColor = .darkGray
+            tabController.viewControllers = [UINavigationController(rootViewController: explore),UINavigationController(rootViewController: profilePage),UINavigationController(rootViewController: forum)]
+            
+            tabController.tabBar.backgroundColor = .backgroundGreen
+            tabController.tabBar.barTintColor = .backgroundGreen
+            tabController.tabBar.tintColor = .darkGray
 
-        tabController.tabBar.items?[0].image = UIImage(named: "explore")
-        tabController.tabBar.items![0].selectedImage = UIImage(named: "explore")
-        tabController.tabBar.items?[1].image = UIImage(named: "dailyplan")
-        tabController.tabBar.items![1].selectedImage = UIImage(named: "dailyplan")
-        tabController.tabBar.items?[2].image = UIImage(named: "forum")
-        tabController.tabBar.items![2].selectedImage = UIImage(named: "forum")
+            tabController.tabBar.items?[0].image = UIImage(named: "explore")
+            tabController.tabBar.items![0].selectedImage = UIImage(named: "explore")
+            tabController.tabBar.items?[1].image = UIImage(named: "dailyplan")
+            tabController.tabBar.items![1].selectedImage = UIImage(named: "dailyplan")
+            tabController.tabBar.items?[2].image = UIImage(named: "forum")
+            tabController.tabBar.items![2].selectedImage = UIImage(named: "forum")
 
-        return tabController
+            return tabController
+        } else {
+            let forum = SplashViewController()
+            
+            explore.title = "Explore"
+            profilePage.title = "Daily Plan"
+            forum.title = "Forum"
+
+            tabController.viewControllers = [UINavigationController(rootViewController: explore),UINavigationController(rootViewController: profilePage),forum]
+            
+            tabController.tabBar.backgroundColor = .backgroundGreen
+            tabController.tabBar.barTintColor = .backgroundGreen
+            tabController.tabBar.tintColor = .darkGray
+
+            tabController.tabBar.items?[0].image = UIImage(named: "explore")
+            tabController.tabBar.items![0].selectedImage = UIImage(named: "explore")
+            tabController.tabBar.items?[1].image = UIImage(named: "dailyplan")
+            tabController.tabBar.items![1].selectedImage = UIImage(named: "dailyplan")
+            tabController.tabBar.items?[2].image = UIImage(named: "forum")
+            tabController.tabBar.items![2].selectedImage = UIImage(named: "forum")
+
+            return tabController
+        }
     }
 }

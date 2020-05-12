@@ -49,14 +49,14 @@ final class ExploreCollectionViewCell: UICollectionViewCell {
         }
 
         title.snp.makeConstraints { (make) in
-            make.height.equalTo(20)
+//            make.height.equalTo(20)
             make.trailing.equalToSuperview().offset(15)
             make.leading.equalToSuperview().offset(15)
             make.bottom.equalTo(subTitle.snp.top).offset(-7)
         }
 
         subTitle.snp.makeConstraints { (make) in
-            make.height.equalTo(20)
+//            make.height.equalTo(20)
             make.trailing.equalToSuperview().offset(15)
             make.leading.equalToSuperview().offset(15)
             make.bottom.equalToSuperview().offset(-20)

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 import Kingfisher
+import SnapKit
 
 protocol SidebarViewDelegate: class {
     func sidebarDidSelectRow(row: Row)
@@ -48,7 +49,7 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.backgroundColor = .backgroundGreen
         self.clipsToBounds=true
         
-        titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Default Name")","Settings","Rate Us", "Baby Names (Upcoming)","Donate", "Sign Out"]
+        titleArr = ["\(Auth.auth().currentUser?.displayName! ?? "Profile")","Settings","Rate Us", "Baby Names (Upcoming)","Donate", "Sign Out"]
         
         setupViews()
         
@@ -63,7 +64,11 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleArr.count
+        if Auth.auth().currentUser != nil {
+            return titleArr.count
+        } else {
+            return titleArr.count-1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,7 +100,7 @@ class SidebarView: UIView, UITableViewDelegate, UITableViewDataSource {
             cellLbl.text = titleArr[indexPath.row]
             cellLbl.font=UIFont.systemFont(ofSize: 17)
             cellLbl.textColor=UIColor.gray
-        } else {
+        } else {            
             cell.textLabel?.text=titleArr[indexPath.row]
             cell.textLabel?.textColor=UIColor.gray
         }

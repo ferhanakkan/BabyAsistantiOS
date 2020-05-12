@@ -7,102 +7,21 @@
 //
 
 import UIKit
-import SnapKit
 
 struct SplashViewModel {
     
-    //MARK: - Set UI
-    
-    internal func setGreenView(owner: SplashViewController) {
-        
-        let greenView = UIView()
-        greenView.backgroundColor = .backgroundGreen
-        owner.view.addSubview(greenView)
-        greenView.roundCornersEachCorner([.bottomLeft,.bottomRight], radius: 30)
-        greenView.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(0)
-            make.height.equalTo(owner.view.frame.height*0.4)
-            make.width.equalTo(owner.view.frame.width)
-        }
-        
-    }
-    
-    internal func setCollectionView(owner: SplashViewController) {
-        owner.view.addSubview(owner.collectionView)
-        owner.collectionView.shadowAndCorner(radius: 15, shadowRadius: 7, opacity: 0.6, color: .black, width: 5, height: 5)
-        owner.collectionView.showsVerticalScrollIndicator = false
-        owner.collectionView.showsHorizontalScrollIndicator = false
-        owner.collectionView.isScrollEnabled = false
-        owner.collectionView.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.top.greaterThanOrEqualTo(owner.imageView!.snp.bottom).offset(20)
-            make.centerY.equalToSuperview()
-            make.height.equalTo(400)
-        }
-    }
-        
-    internal func setImage(_ owner: SplashViewController) {
-
-        let myImageView:UIImageView = UIImageView()
-        myImageView.contentMode = .scaleAspectFit
-        myImageView.image = UIImage(named: "babylogo.jpg")!
-        
-        owner.imageView = myImageView
-        owner.view.addSubview(owner.imageView!)
-        
-        owner.imageView!.snp.makeConstraints { (make) in
-            make.width.equalTo(100)
-            make.height.equalTo(100)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(20)
-        }
-    }
-    
-    //MARK: - Collection View Logic's
-    
-    
-    internal func collectionViewSetup(owner: SplashViewController) {
-        owner.collectionView.delegate = owner
-        owner.collectionView.dataSource = owner
-        owner.collectionView.register(UINib(nibName: "RegisterCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "RegisterCollectionViewCell")
-        owner.collectionView.register(UINib(nibName: "LogInCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "LogInCollectionViewCell")
-        owner.collectionView.register(UINib(nibName: "ResetPasswordCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "ResetPasswordCollectionViewCell")
-        owner.collectionView.isPagingEnabled = true
-        collectionViewSetShowCell(row: 1, owner: owner)
-    }
-    
-    internal func collectionViewScroolEndEditing(_ owner : SplashViewController) {
-        for cell in owner.collectionView.visibleCells {
-            if let row = owner.collectionView.indexPath(for: cell)?.item {
-                let index = IndexPath(row: row, section: 0)
-                owner.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
-            }
-        }
-    }
-    
-    internal func collectionViewSetShowCell(row: Int , owner: SplashViewController) {
-        let index = IndexPath(row: row, section: 0)
-        owner.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
-    }
-    
-    internal func collectionViewCell(indexPath: IndexPath, owner: SplashViewController) -> UICollectionViewCell{
+    func collectionViewCell(indexPath: IndexPath, owner: SplashViewController) -> UICollectionViewCell{
         switch indexPath.row {
-            case 3:
-                let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "ResetPasswordCollectionViewCell", for: indexPath) as! ResetPasswordCollectionViewCell
-                cell.delegate = owner
-                return cell
-        case 2:
-            let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "ResetPasswordCollectionViewCell", for: indexPath) as! ResetPasswordCollectionViewCell
-            cell.delegate = owner
-            return cell
         case 0:
-            let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "RegisterCollectionViewCell", for: indexPath) as! RegisterCollectionViewCell
-            
+            let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "RegisterColletionViewCell", for: indexPath) as! RegisterColletionViewCell
             cell.delegate = owner
             return cell
         case 1:
-            let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "LogInCollectionViewCell", for: indexPath) as! LogInCollectionViewCell
+            let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "LogInColletionViewCell", for: indexPath) as! LogInColletionViewCell
+            cell.delegate = owner
+            return cell
+        case 2:
+            let cell = owner.collectionView.dequeueReusableCell(withReuseIdentifier: "ForgotColletionViewCell", for: indexPath) as! ForgotColletionViewCell
             cell.delegate = owner
             return cell
         default:

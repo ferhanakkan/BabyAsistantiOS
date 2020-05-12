@@ -11,4 +11,5 @@ import Foundation
 struct ExploreDetailModel {
     let title: String
     let imageUrl: URL
+    let time: Int
 }

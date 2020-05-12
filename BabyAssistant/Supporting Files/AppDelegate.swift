@@ -98,7 +98,7 @@ extension AppDelegate {
     
     //MARK: - Select Root
     private func selectRoot() {
-        let currentUser = Auth.auth().currentUser
+     /*   let currentUser = Auth.auth().currentUser
         if let rememberMe = UserDefaults.standard.value(forKey: "rememberMe") as? Bool {
             if currentUser != nil && rememberMe {
                 window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
@@ -108,7 +108,9 @@ extension AppDelegate {
             
         } else {
             window?.rootViewController = NavigationBar.createNavigatonController(owner: self)
-        }
+        }*/
+        
+        window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: self)
     }
     
 }

@@ -60,7 +60,7 @@ struct FirebaseUser {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-         UIApplication.getPresentedViewController()?.view.window?.rootViewController = NavigationBar.createNavigatonController(owner: UIApplication.getPresentedViewController()!)
+        UIApplication.getPresentedViewController()?.view.window?.rootViewController = Tabbar.createTabBarWithNavigationBar(owner: UIApplication.getPresentedViewController()!)
     }
     
 }

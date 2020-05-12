@@ -14,7 +14,7 @@ final class ExploreDetailCollectionViewCell: UICollectionViewCell {
     
     let image: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleToFill
+        view.contentMode = .scaleAspectFit
         view.layer.cornerRadius = 15
         return view
     }()
@@ -45,7 +45,7 @@ final class ExploreDetailCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(title)
         
         image.snp.makeConstraints { (make) in
-            make.height.equalTo(450)
+            make.height.equalTo(200)
             make.top.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
         }
